@@ -1,24 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Typography from "@material-ui/core/Typography";
+import Container from '@material-ui/core/Container';
+import Catalog from "./components/Catalog";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Container align="center" maxWidth="sm" style={{padding:50}}>
+        <Typography variant="h3" component="h2">
+          החנות של מונדו
+        </Typography>
+        <Typography variant="h6" component="h4" style={{ marginBottom: 40 }}>
+         מבחר רב של פירות העונה המשתנים בהתאם לסחורה בשוק.
+         לפרטים נוספים התקשרו: מונדו 054-3300800
+        </Typography>
+        <Catalog />
+      </Container>
     </div>
   );
 }
