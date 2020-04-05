@@ -14,11 +14,7 @@ const PORT =  8080
 const app = express()
 // Implement middleware
 app.use(cors())
-app.use(helmet())
-app.use(compression())
 app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
-app.use(cookieParser())
 app.use(bodyParser.json())
 if (process.env.NODE_ENV && process.env.NODE_ENV !== 'development') {
     app.get('*', (req, res) => {
