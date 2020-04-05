@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Catalog from "./components/Catalog";
 import "./App.css";
 import logo from "./resources/logo.jpeg"
+import 'typeface-roboto';
 
 function App() {
   return (
@@ -21,10 +22,10 @@ function App() {
         <Grid item xs={12}>
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="h6" component="h4" >
+          <Typography variant="h4" component="h4" >
             מבחר רב של פירות העונה המשתנים בהתאם לסחורה בשוק 
           </Typography>
-          <Typography variant="h6" component="h5" style={{ marginBottom: 40 }}>
+          <Typography variant="h6" component="h4" style={{ marginBottom: 40 }}>
             משלוחים לישובי לב השרון, תל מונד,קדימה-צורן ואבן יהודה
           </Typography>
         </Grid>
