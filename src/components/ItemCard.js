@@ -11,6 +11,7 @@ import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
+import { ToastContainer, toast } from "react-toastify";
 
 import clsx from "clsx";
 
@@ -31,11 +32,20 @@ const useStyles = makeStyles(theme => ({
     width: "25ch"
   }
 }));
+const notify = () => toast.success('הפריט נוסף לעגלה', {
+    position: "top-right",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: false
+    });
 
 const ItemCard = ({ item, addToCart }) => {
   const classes = useStyles();
 
   return (
+      <>
     <Card className={classes.root}>
       <CardMedia
         className={classes.media}
@@ -46,7 +56,7 @@ const ItemCard = ({ item, addToCart }) => {
         <Typography
           gutterBottom
           variant="h5"
-          component="h2"
+          component="h3"
           style={{ height: 50 }}
         >
           {item.name}
@@ -83,12 +93,24 @@ const ItemCard = ({ item, addToCart }) => {
           color="primary"
           aria-label="add"
           size="small"
-          onClick={e => addToCart(item)}
+          onClick={e => {addToCart(item);notify();}}
         >
           <AddIcon />
         </Fab>
       </CardActions>
     </Card>
+    <ToastContainer
+          position="bottom-left"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={true}
+          pauseOnVisibilityChange
+          draggable
+          pauseOnHover
+        />
+        </>
   );
 };
 

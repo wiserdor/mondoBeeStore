@@ -8,20 +8,29 @@ import ListItemText from "@material-ui/core/ListItemText";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
-import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
-import Details from "./Details"
+import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
+import Details from "./Details";
+import { ToastContainer, toast } from "react-toastify";
 
 const Cart = ({ cart, deleteFromCart }) => {
+  const notify = () => toast.error('הפריט הוסר מהעגלה', {
+    position: "top-right",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: false
+    });
+
   return (
     <>
       <Typography variant="h6">סיכום הזמנה</Typography>
       <div>
         <List>
-          {cart.map((i) => (
+          {cart.map(i => (
             <ListItem>
               <ListItemAvatar>
-                <Avatar></Avatar>
+                <FiberManualRecordIcon></FiberManualRecordIcon>
               </ListItemAvatar>
               <ListItemText
                 primary={i.name}
@@ -29,13 +38,29 @@ const Cart = ({ cart, deleteFromCart }) => {
               />
               <ListItemSecondaryAction>
                 <IconButton edge="end" aria-label="delete">
-                  <DeleteIcon onClick={() => deleteFromCart(i.id)} />
+                  <DeleteIcon
+                    onClick={() => {
+                      deleteFromCart(i.id);
+                      notify();
+                    }}
+                  />
                 </IconButton>
               </ListItemSecondaryAction>
             </ListItem>
           ))}
         </List>
-        {cart.length ? <Details cart={cart} />:null}
+        {cart.length ? <Details cart={cart} /> : null}
+        <ToastContainer
+          position="bottom-left"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={true}
+          pauseOnVisibilityChange
+          draggable
+          pauseOnHover
+        />
       </div>
     </>
   );

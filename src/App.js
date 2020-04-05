@@ -2,6 +2,7 @@ import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Container from '@material-ui/core/Container';
 import Grid from "@material-ui/core/Grid";
+import 'react-toastify/dist/ReactToastify.css';
 
 import Catalog from "./components/Catalog";
 import "./App.css";
