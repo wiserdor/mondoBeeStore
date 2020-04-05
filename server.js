@@ -9,7 +9,7 @@ const cors = require('cors')
 // Import routes
 const homeRouter = require('./routes/home')
 // Setup default port
-const PORT = process.env.PORT || 8080
+const PORT =  8080
 // Create express app
 const app = express()
 // Implement middleware
