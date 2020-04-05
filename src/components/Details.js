@@ -24,8 +24,8 @@ export default function Details({ cart }) {
     setOpen(false);
   };
 
-  const sendEmail = () => {
-    let a=Axios.post("/api/send",{cart:cart,details:{name,phone,address}});
+  const sendEmail =async () => {
+    let a=await Axios.post("/api/send",{cart:cart,details:{name,phone,address}});
   };
 
   return (
@@ -75,7 +75,7 @@ export default function Details({ cart }) {
           <Button onClick={handleClose} color="primary">
             בטל
           </Button>
-          <Button onClick={sendEmail} color="primary">
+          <Button onClick={()=>{sendEmail();window.alert("ההזמנה בוצעה בהצלחה!");handleClose();}} color="primary">
             אישור
           </Button>
         </DialogActions>
