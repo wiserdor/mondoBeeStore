@@ -7,7 +7,7 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <Container align="center" maxWidth="sm" style={{padding:50}}>
+      <Container align="center" maxWidth="sm" style={{padding:10}}>
         <Typography variant="h3" component="h2">
           החנות של מונדו
         </Typography>
