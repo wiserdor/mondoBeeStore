@@ -14,6 +14,7 @@ import Details from "./Details"
 
 const Cart = ({ cart, deleteFromCart }) => {
   return (
+    <Grid align="center" xs={12}>
     <div style={{width: '100%',
     maxWidth: 360}}>
       <Typography variant="h6">סיכום הזמנה</Typography>
@@ -39,6 +40,7 @@ const Cart = ({ cart, deleteFromCart }) => {
         {cart.length ? <Details />:null}
       </div>
     </div>
+    </Grid>
   );
 };
 
