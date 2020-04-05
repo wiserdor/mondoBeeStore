@@ -7,7 +7,7 @@ const catalogList = [
   {
     id: 0,
     step: "1.5",
-    name: "אבוקדו האס",
+    name: "אבוקדו האס (כי אין כמו מצה עם אבוקדו)",
     count: 1.5,
     unit: 'ק"ג',
     img_path: "/avocado.jpeg",
