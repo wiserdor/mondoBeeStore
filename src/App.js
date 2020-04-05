@@ -12,10 +12,10 @@ function App() {
   return (
     <div className="App">
       <Container
-        className=""
+      
         maxWidth="sm"
         align="center"
-        style={{ padding: 10, textAlign: "center" }}
+        style={{ textAlign: "center" }}
       >
       <img src={logo} className="logo-background"/>
         <Grid item xs={12}>
