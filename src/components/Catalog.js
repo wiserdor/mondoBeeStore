@@ -18,6 +18,7 @@ const catalogList = [
     name: "דבש",
     step: "0.5",
     count: 1,
+    price:['קילו:45 ש"ח ','חצי קילו:25 ש"ח'],
     unit: 'ק"ג',
     img_path: "/honey.jpeg"
   },
@@ -26,6 +27,7 @@ const catalogList = [
     name: "אננס",
     count: 1,
     step: "1",
+    price:['קטן:25 ש"ח',' גדול:35 ש"ח'],
     unit: "יחידות",
     img_path: "/pineapple.jpeg"
   },

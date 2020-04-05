@@ -47,10 +47,15 @@ const ItemCard = ({ item, addToCart }) => {
           gutterBottom
           variant="h5"
           component="h2"
-          style={{ height: 80 }}
+          style={{ height: 50 }}
         >
           {item.name}
         </Typography>
+        {item.price && item.price.map((p)=>
+          <Typography variant="body2" component="p">
+            {p}
+          </Typography>
+        )}
         <Typography variant="body2" color="textSecondary" component="p">
           {item.description || ""}
         </Typography>
