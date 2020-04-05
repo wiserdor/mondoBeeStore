@@ -53,7 +53,7 @@ const catalogList = [
     count: 1,
     step: "5",
     unit: "קילו",
-    img_path: "/oranges.jpeg"
+    img_path: "/oranges2.jpeg"
   }
 ];
 
