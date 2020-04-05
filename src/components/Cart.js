@@ -14,9 +14,7 @@ import Details from "./Details"
 
 const Cart = ({ cart, deleteFromCart }) => {
   return (
-    <Grid align="center" xs={12}>
-    <div style={{width: '100%',
-    maxWidth: 360}}>
+    <>
       <Typography variant="h6">סיכום הזמנה</Typography>
       <div>
         <List>
@@ -39,8 +37,7 @@ const Cart = ({ cart, deleteFromCart }) => {
         </List>
         {cart.length ? <Details />:null}
       </div>
-    </div>
-    </Grid>
+    </>
   );
 };
 

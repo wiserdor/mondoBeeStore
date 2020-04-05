@@ -1,13 +1,15 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
+import Container from '@material-ui/core/Container';
 import Grid from "@material-ui/core/Grid";
+
 import Catalog from "./components/Catalog";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <Grid container align="center" style={{padding:10,textAlign:"center"}}>
+      <Container maxWidth="sm" align="center" style={{padding:10,textAlign:"center"}}>
       <Grid item xs={12}>
         <Typography variant="h3" style={{textAlign:"center"}} component="h2">
           החנות של מונדו
@@ -20,7 +22,7 @@ function App() {
         </Typography>
         </Grid>
         <Catalog />
-      </Grid>
+      </Container>
     </div>
   );
 }

@@ -74,12 +74,12 @@ const Catalog = () => {
     <>
       <Grid container spacing={1}>
         {catalogList.map((c) => (
-          <Grid key={c.id + "card"} item xs>
+          <Grid key={c.id + "card"} justify="center" align = "center" item xs>
             <ItemCard item={c} addToCart={addToCart} />
           </Grid>
         ))}
       </Grid>
-      <Grid item xs={12} md={6} style= {{ marginTop:40}} justify="center" align = "center">
+      <Grid item xs={12} md={12} style= {{ marginTop:40 , textAlign:"center"}} justify="center" align = "center">
       <Cart cart={cart} deleteFromCart={deleteFromCart}/>
       </Grid>
     </>
