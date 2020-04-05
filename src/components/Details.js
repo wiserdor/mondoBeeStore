@@ -8,7 +8,6 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Axios from "axios";
-import { connect } from "node-mailjet";
 
 export default function Details({ cart }) {
   const [open, setOpen] = useState(false);
@@ -26,45 +25,7 @@ export default function Details({ cart }) {
   };
 
   const sendEmail = () => {
-    const mailjet = connect(
-      "2c99fdc71852f0d0462f1dba726f3d6e",
-      "c6d15935dda204af494e6c026424a816"
-    );
-    const request = mailjet.post("send", { version: "v3.0" }).request({
-      Messages: [
-        {
-          From: {
-            Email: "mondo@bee.com",
-            Name: "Mondo"
-          },
-          To: [
-            {
-              Email: "vgibsonsg@gmail.com",
-              Name: "dor"
-            }
-          ],
-          Subject: "הזמנה חדשה ממונדו בי",
-          TextPart: "My first Mailjet email",
-          HTMLPart:
-            "<Title>${name}הזמנה חדשה מ</Title>" +
-            cart.map(
-              i => `
-          
-          <div><span>${i.name}</span><span>:${i.unit +
-                " " +
-                i.count}</span></div>
-          `
-            )
-        }
-      ]
-    });
-    request
-      .then(result => {
-        window.alert(result.body);
-      })
-      .catch(err => {
-        window.alert(err.statusCode);
-      });
+    let a=Axios.post("/api/send",{cart:cart,details:{name,phone,address}});
   };
 
   return (
