@@ -26,12 +26,11 @@ export default function Details({ cart }) {
   };
 
   const sendEmail = () => {
-      console.log(cart)
     const mailjet = connect(
       "2c99fdc71852f0d0462f1dba726f3d6e",
       "c6d15935dda204af494e6c026424a816"
     );
-    const request = mailjet.post("send", { version: "v3.1" }).request({
+    const request = mailjet.post("send", { version: "v3.1" ,'proxyUrl': 'https://mondobee.herokuapp.com/'}).request({
       Messages: [
         {
           From: {
@@ -42,19 +41,20 @@ export default function Details({ cart }) {
             {
               Email: "vgibsonsg@gmail.com",
               Name: "dor"
-            },
-            
+            }
           ],
           Subject: "הזמנה חדשה ממונדו בי",
           TextPart: "My first Mailjet email",
-          HTMLPart: cart.map(
-            i => `
-          <Title>${name}הזמנה חדשה מ</Title>
+          HTMLPart:
+            "<Title>${name}הזמנה חדשה מ</Title>" +
+            cart.map(
+              i => `
+          
           <div><span>${i.name}</span><span>:${i.unit +
-              " " +
-              i.count}</span></div>
+                " " +
+                i.count}</span></div>
           `
-          )
+            )
         }
       ]
     });
