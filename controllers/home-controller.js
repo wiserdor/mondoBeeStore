@@ -14,8 +14,8 @@ exports.homeGet = async (req, res) => {
         },
         To: [
           {
-            Email: "vgibsonsg@gmail.com",
-            Name: "dor"
+            Email: "Adigolan0910@gmail.com",
+            Name: "Adi"
           }
         ],
         Subject: "הזמנה חדשה בחנות של מונדו",
