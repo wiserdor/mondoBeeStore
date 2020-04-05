@@ -50,9 +50,10 @@ const catalogList = [
   {
     id: 5,
     name: "תפוז",
-    count: 1,
+    count: 5,
+    description:'שקים של 5 ק"ג',
     step: "5",
-    unit: "קילו",
+    unit: 'ק"ג',
     img_path: "/oranges2.jpeg"
   }
 ];
