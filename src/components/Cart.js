@@ -35,7 +35,7 @@ const Cart = ({ cart, deleteFromCart }) => {
             </ListItem>
           ))}
         </List>
-        {cart.length ? <Details />:null}
+        {cart.length ? <Details cart={cart} />:null}
       </div>
     </>
   );

@@ -8,7 +8,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Axios from "axios";
-import Mailgun from "mailgun-js";
+import { connect } from "node-mailjet";
 
 export default function Details({ cart }) {
   const [open, setOpen] = useState(false);
@@ -26,35 +26,45 @@ export default function Details({ cart }) {
   };
 
   const sendEmail = () => {
-    const API_KEY = process.env.ENV_VARIABLE["MAILGUN_API_KEY"];
-    const domain = process.env.ENV_VARIABLE["MAILGUN_DOMAIN"];
-    const data = {
-      from: "mondo@bee.com",
-      to: "vgibsonsg@gmail.com",
-      subject: "הזמנה חדשה ממונדו בי",
-      html:
-        `<div>
-        שם: ${name}
-        כתובת: ${address}
-        טלפון: ${phone}
-        </div>` + cart
-    };
-    var mailgun = new Mailgun({ apiKey: API_KEY, domain: domain });
-
-    mailgun.messages().send(data, function(err, body) {
-      //If there is an error, render the error page
-      // if (err) {
-      //     res.render('error', { error : err});
-      //     console.log("got an error: ", err);
-      // }
-      // //Else we can greet    and leave
-      // else {
-      //     //Here "submitted.jade" is the view file for this landing page
-      //     //We pass the variable "email" from the url parameter in an object rendered by Jade
-      //     res.render('submitted', { email : req.params.mail });
-      //     console.log(body);
-      // }
+      console.log(cart)
+    const mailjet = connect(
+      "2c99fdc71852f0d0462f1dba726f3d6e",
+      "c6d15935dda204af494e6c026424a816"
+    );
+    const request = mailjet.post("send", { version: "v3.1" }).request({
+      Messages: [
+        {
+          From: {
+            Email: "mondo@bee.com",
+            Name: "Mondo"
+          },
+          To: [
+            {
+              Email: "vgibsonsg@gmail.com",
+              Name: "dor"
+            },
+            
+          ],
+          Subject: "הזמנה חדשה ממונדו בי",
+          TextPart: "My first Mailjet email",
+          HTMLPart: cart.map(
+            i => `
+          <Title>${name}הזמנה חדשה מ</Title>
+          <div><span>${i.name}</span><span>:${i.unit +
+              " " +
+              i.count}</span></div>
+          `
+          )
+        }
+      ]
     });
+    request
+      .then(result => {
+        console.log(result.body);
+      })
+      .catch(err => {
+        console.log(err.statusCode);
+      });
   };
 
   return (
