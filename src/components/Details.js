@@ -30,7 +30,7 @@ export default function Details({ cart }) {
       "2c99fdc71852f0d0462f1dba726f3d6e",
       "c6d15935dda204af494e6c026424a816"
     );
-    const request = mailjet.post("send", { version: "v3.1" ,'proxyUrl': 'https://mondobee.herokuapp.com/'}).request({
+    const request = mailjet.post("send", { version: "v3.0" }).request({
       Messages: [
         {
           From: {
@@ -60,10 +60,10 @@ export default function Details({ cart }) {
     });
     request
       .then(result => {
-        console.log(result.body);
+        window.alert(result.body);
       })
       .catch(err => {
-        console.log(err.statusCode);
+        window.alert(err.statusCode);
       });
   };
 
