@@ -14,22 +14,22 @@ import AddIcon from "@material-ui/icons/Add";
 
 import clsx from "clsx";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
-    maxWidth: 200,
+    maxWidth: 200
   },
   media: {
-    height: 170,
+    height: 170
   },
   margin: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(1)
   },
   withoutLabel: {
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(3)
   },
   textField: {
-    width: "25ch",
-  },
+    width: "25ch"
+  }
 }));
 
 const ItemCard = ({ item, addToCart }) => {
@@ -51,6 +51,9 @@ const ItemCard = ({ item, addToCart }) => {
         >
           {item.name}
         </Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
+          {item.description || ""}
+        </Typography>
       </CardContent>
       <CardActions>
         <TextField
@@ -59,7 +62,7 @@ const ItemCard = ({ item, addToCart }) => {
           type="number"
           id="standard-start-adornment"
           defaultValue={item.count}
-          onChange ={(e)=>item.count=parseInt(e.target.value)}
+          onChange={e => (item.count = parseInt(e.target.value))}
           className={clsx(classes.margin, classes.textField)}
           InputProps={{
             startAdornment: (
@@ -67,12 +70,17 @@ const ItemCard = ({ item, addToCart }) => {
             ),
             inputProps: {
               step: item.step,
-              min: "0",
-            },
+              min: "0"
+            }
           }}
         />
-        <Fab color="primary" aria-label="add" size="small" onClick={(e)=>addToCart(item)}>
-          <AddIcon  />
+        <Fab
+          color="primary"
+          aria-label="add"
+          size="small"
+          onClick={e => addToCart(item)}
+        >
+          <AddIcon />
         </Fab>
       </CardActions>
     </Card>

@@ -7,10 +7,11 @@ const catalogList = [
   {
     id: 0,
     step: "1.5",
-    name: "אבוקדו האס (כי אין כמו מצה עם אבוקדו)",
+    name: "אבוקדו האס",
+    description: "כי אין כמו מצה עם אבוקדו",
     count: 1.5,
     unit: 'ק"ג',
-    img_path: "/avocado.jpeg",
+    img_path: "/avocado.jpeg"
   },
   {
     id: 1,
@@ -18,7 +19,7 @@ const catalogList = [
     step: "0.5",
     count: 1,
     unit: 'ק"ג',
-    img_path: "/honey.jpeg",
+    img_path: "/honey.jpeg"
   },
   {
     id: 2,
@@ -26,7 +27,7 @@ const catalogList = [
     count: 1,
     step: "1",
     unit: "יחידות",
-    img_path: "/pineapple.jpeg",
+    img_path: "/pineapple.jpeg"
   },
   {
     id: 3,
@@ -34,7 +35,7 @@ const catalogList = [
     count: 1,
     step: "1",
     unit: "נספק",
-    img_path: "/sherry2.jpeg",
+    img_path: "/sherry2.jpeg"
   },
   {
     id: 4,
@@ -42,7 +43,7 @@ const catalogList = [
     count: 1,
     step: "1",
     unit: "נספק",
-    img_path: "/shery-tomato1.jpeg",
+    img_path: "/shery-tomato1.jpeg"
   },
   {
     id: 5,
@@ -50,37 +51,44 @@ const catalogList = [
     count: 1,
     step: "1",
     unit: "יחידות",
-    img_path: "/oranges.jpeg",
-  },
+    img_path: "/oranges.jpeg"
+  }
 ];
 
 const Catalog = () => {
   const [cart, setCart] = useState([]);
 
-  const addToCart = (item) => {
+  const addToCart = item => {
     if (item.count < 0) return;
     console.log(item);
-    console.log(cart.filter((i) => i.id !== item.id));
+    console.log(cart.filter(i => i.id !== item.id));
 
-      const newArr=[...cart.filter((i) => i.id !== item.id),item]
+    const newArr = [...cart.filter(i => i.id !== item.id), item];
     setCart(newArr);
   };
 
-  const deleteFromCart = (id) => {
-    setCart(cart.filter((i) => i.id !== id));
+  const deleteFromCart = id => {
+    setCart(cart.filter(i => i.id !== id));
   };
 
   return (
     <>
       <Grid container spacing={1}>
-        {catalogList.map((c) => (
-          <Grid key={c.id + "card"} justify="center" align = "center" item xs>
+        {catalogList.map(c => (
+          <Grid key={c.id + "card"} justify="center" align="center" item xs>
             <ItemCard item={c} addToCart={addToCart} />
           </Grid>
         ))}
       </Grid>
-      <Grid item xs={12} md={12} style= {{ marginTop:40 , textAlign:"center"}} justify="center" align = "center">
-      <Cart cart={cart} deleteFromCart={deleteFromCart}/>
+      <Grid
+        item
+        xs={12}
+        md={12}
+        style={{ marginTop: 40, textAlign: "center" }}
+        justify="center"
+        align="center"
+      >
+        <Cart cart={cart} deleteFromCart={deleteFromCart} />
       </Grid>
     </>
   );
