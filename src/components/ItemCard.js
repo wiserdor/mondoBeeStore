@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     width: "25ch",
   },
 }));
-//yo
+
 const ItemCard = ({ item, addToCart }) => {
   const classes = useStyles();
 
