@@ -19,11 +19,11 @@ import clsx from "clsx";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 280,
-    minWidth: 280,
+    maxWidth: 320,
+    minWidth: 300,
   },
   media: {
-    height: 220,
+    height: 230,
   },
   margin: {
     margin: theme.spacing(1),
