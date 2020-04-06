@@ -3,6 +3,7 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 
 import Catalog from "./components/Catalog";
 import "./App.css";
@@ -30,6 +31,17 @@ function App() {
           </Typography>
         </Grid>
         <Catalog />
+        <ToastContainer
+        position="bottom-left"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={true}
+        pauseOnVisibilityChange
+        draggable
+        pauseOnHover
+      />
       </Container>
     </div>
   );

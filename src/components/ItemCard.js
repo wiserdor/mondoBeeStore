@@ -62,8 +62,8 @@ const ItemCard = ({ item, addToCart }) => {
           >
             {item.name}
           </Typography>
-          {item.price &&
-            item.price.map(p => (
+          {item.priceDisplay &&
+            item.priceDisplay.map(p => (
               <Typography variant="body2" component="p">
                 {p}
               </Typography>
@@ -91,6 +91,7 @@ const ItemCard = ({ item, addToCart }) => {
               }
             }}
           />
+          
           <Fab
             color="primary"
             aria-label="add"
@@ -104,17 +105,6 @@ const ItemCard = ({ item, addToCart }) => {
           </Fab>
         </CardActions>
       </Card>
-      <ToastContainer
-        position="bottom-left"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={true}
-        pauseOnVisibilityChange
-        draggable
-        pauseOnHover
-      />
     </>
   );
 };

@@ -38,6 +38,5 @@ exports.homeGet = async (req, res) => {
       console.log("sent");
     })
     .error(e => console.log(e))
-    .finally(() => res.status(200));
-  console.log("ok");
+    .finally(() => res.status(200).send("ok"));
 };

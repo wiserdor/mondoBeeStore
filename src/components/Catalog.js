@@ -18,7 +18,7 @@ const catalogList = [
     name: "דבש",
     step: "0.5",
     count: 1,
-    price:['קילו: 45 ש"ח ','חצי קילו: 25 ש"ח'],
+    priceDisplay: ['קילו: ₪45  ', 'חצי קילו: ₪25 '],
     unit: 'ק"ג',
     img_path: "/honey.jpeg"
   },
@@ -27,7 +27,7 @@ const catalogList = [
     name: "אננס",
     count: 1,
     step: "1",
-    price:['קטן: 25 ש"ח',' גדול: 35 ש"ח'],
+    priceDisplay: ['קטן: ₪25', ' גדול: ₪35'],
     unit: "יחידות",
     img_path: "/pineapple.jpeg"
   },
@@ -36,6 +36,7 @@ const catalogList = [
     name: "עגבניות שרי תמר",
     count: 1,
     step: "1",
+    priceDisplay: ['₪19 :קילו'],
     unit: "נספק",
     img_path: "/sherry2.jpeg"
   },
@@ -51,10 +52,100 @@ const catalogList = [
     id: 5,
     name: "תפוז",
     count: 5,
-    description:'שקים של 5 ק"ג',
+    description: 'שקים של 5 ק"ג',
     step: "5",
     unit: 'ק"ג',
     img_path: "/oranges2.jpeg"
+  },
+  {
+    id: 6,
+    name: "עגבניות מגי",
+    count: 1,
+    priceDisplay: ['קילו: ₪19'],
+    step: "1",
+    unit: 'נספק',
+    img_path: "/meggie2.jpeg"
+  },
+  {
+    id: 7,
+    name: "עגבניות שרי ליקופן",
+    count: 1,
+    priceDisplay: ['₪19 :קילו'],
+    step: "1",
+    unit: 'נספק',
+    img_path: "/default.png"
+  },
+  {
+    id: 8,
+    name: "בננות",
+    count: 1,
+    priceDisplay: [`₪10 :קילו`],
+    step: "1",
+    unit: 'נספק',
+    img_path: "/banana.jfif"
+  },
+  {
+    id: 9,
+    name: "שסק",
+    count: 1,
+    priceDisplay: ['₪25 :קילו'],
+    step: "1",
+    unit: 'נספק',
+    img_path: "/default.png"
+  },
+  {
+    id: 10,
+    name: "לבבות חסה",
+    count: 1,
+    priceDisplay: ['₪12 :חבילה(2 ראשים)'],
+    step: "1",
+    unit: 'נספק',
+    img_path: "/default.png"
+  },
+  {
+    id: 11,
+    name: "שמן זית 1 ליטר",
+    count: 1,
+    priceDisplay: ['₪48 :יחידה'],
+    step: "1",
+    unit: 'יחדות',
+    img_path: "/olive-oil.jfif"
+  },
+  {
+    id: 12,
+    name: "שמן זית 2 ליטר",
+    count: 1,
+    priceDisplay: ['₪85 :יחידה'],
+    step: "1",
+    unit: 'יחדות',
+    img_path: "/olive-oil.jfif"
+  },
+  {
+    id: 13,
+    name: "אגס",
+    count: 1,
+    priceDisplay: ['₪16 :קילו'],
+    step: "1",
+    unit: 'נספק',
+    img_path: "/pear.jpeg"
+  },
+  {
+    id: 14,
+    name: "תפוח עץ גאלה וסמיט",
+    count: 1,
+    priceDisplay: ['₪15 :קילו'],
+    step: "1",
+    unit: 'נספק',
+    img_path: "/gala.jpeg"
+  },
+  {
+    id: 15,
+    name: "תפוח עץ פינק ליידי",
+    count: 1,
+    priceDisplay: ['₪19 :קילו'],
+    step: "1",
+    unit: 'נספק',
+    img_path: "/pink-lady.jpeg"
   }
 ];
 

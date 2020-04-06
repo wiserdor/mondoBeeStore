@@ -6,7 +6,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { ToastContainer, toast } from "react-toastify";
 import Axios from "axios";
 
 export default function Details({ cart }) {
@@ -24,8 +24,36 @@ export default function Details({ cart }) {
     setOpen(false);
   };
 
-  const sendEmail =async () => {
-    let a=await Axios.post("/api/send",{cart:cart,details:{name,phone,address}});
+  const sendEmail = async () => {
+    if (name && address && phone) {
+      try {
+        let a = await Axios.post("/api/send", {
+          cart: cart,
+          details: { name, phone, address }
+        });
+        window.alert("ההזמנה בוצעה בהצלחה!");
+        window.location.reload();
+      }
+      catch{
+        toast.error("תקלה בעת השליחה, אנא נסה שנית", {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false
+          });
+      }
+    } else {
+      toast.error("נא למלא את כל הפרטים", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false
+      });
+    }
   };
 
   return (
@@ -75,7 +103,12 @@ export default function Details({ cart }) {
           <Button onClick={handleClose} color="primary">
             בטל
           </Button>
-          <Button onClick={()=>{sendEmail();window.alert("ההזמנה בוצעה בהצלחה!");handleClose();}} color="primary">
+          <Button
+            onClick={() => {
+              sendEmail();
+            }}
+            color="primary"
+          >
             אישור
           </Button>
         </DialogActions>
