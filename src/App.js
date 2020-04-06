@@ -15,13 +15,11 @@ function App() {
     <div className="App">
       <Container
       
-        maxWidth="sm"
+        maxWidth="md"
         align="center"
         style={{ textAlign: "center" }}
       >
       <img src={logo} className="logo-background"/>
-        <Grid item xs={12}>
-        </Grid>
         <Grid item xs={12}>
           <Typography variant="h4" component="h4" >
             מבחר רב של פירות העונה המשתנים בהתאם לסחורה בשוק 

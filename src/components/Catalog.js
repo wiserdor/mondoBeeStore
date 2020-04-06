@@ -15,19 +15,39 @@ const catalogList = [
   },
   {
     id: 1,
-    name: "דבש",
-    step: "0.5",
+    name: "דבש חצי קילו",
+    step: "1",
     count: 1,
-    priceDisplay: ['קילו: ₪45  ', 'חצי קילו: ₪25 '],
-    unit: 'ק"ג',
+    price:25,
+    priceDisplay: ['חצי קילו: ₪25 '],
+    unit: 'יחידות',
+    img_path: "/honey.jpeg"
+  },
+  {
+    id: 17,
+    name: "דבש קילו",
+    step: "1",
+    count: 1,
+    price:45,
+    priceDisplay: ['קילו: ₪45'],
+    unit: 'יחידות',
     img_path: "/honey.jpeg"
   },
   {
     id: 2,
-    name: "אננס",
+    name: "אננס קטן",
     count: 1,
     step: "1",
-    priceDisplay: ['קטן: ₪25', ' גדול: ₪35'],
+    priceDisplay: ['יחידה: ₪25'],
+    unit: "יחידות",
+    img_path: "/pineapple.jpeg"
+  },
+  {
+    id: 16,
+    name: "אננס גדול",
+    count: 1,
+    step: "1",
+    priceDisplay: ['יחידה: ₪35'],
     unit: "יחידות",
     img_path: "/pineapple.jpeg"
   },
@@ -53,8 +73,8 @@ const catalogList = [
     name: "תפוז",
     count: 5,
     description: 'שקים של 5 ק"ג',
-    step: "5",
-    unit: 'ק"ג',
+    step: "1",
+    unit: 'שקים',
     img_path: "/oranges2.jpeg"
   },
   {
@@ -104,7 +124,7 @@ const catalogList = [
   },
   {
     id: 11,
-    name: "שמן זית 1 ליטר",
+    name: "שמן זית כבישה קרה 1 ליטר",
     count: 1,
     priceDisplay: ['₪48 :יחידה'],
     step: "1",
@@ -113,7 +133,7 @@ const catalogList = [
   },
   {
     id: 12,
-    name: "שמן זית 2 ליטר",
+    name: "שמן זית כבישה קרה 2 ליטר",
     count: 1,
     priceDisplay: ['₪85 :יחידה'],
     step: "1",

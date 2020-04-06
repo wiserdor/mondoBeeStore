@@ -17,7 +17,7 @@ import clsx from "clsx";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    maxWidth: 250
+    maxWidth: 300
   },
   media: {
     height: 170
@@ -72,7 +72,9 @@ const ItemCard = ({ item, addToCart }) => {
             {item.description || ""}
           </Typography>
         </CardContent>
-        <CardActions style={{backgroundColor:'beige'}}>
+        <CardActions
+          style={{ backgroundColor: "beige", justifyContent: "center" }}
+        >
           <TextField
             label=""
             style={{ maxWidth: 160 }}
@@ -91,7 +93,7 @@ const ItemCard = ({ item, addToCart }) => {
               }
             }}
           />
-          
+
           <Fab
             color="primary"
             aria-label="add"
