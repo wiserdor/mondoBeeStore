@@ -25,13 +25,10 @@ const Cart = ({ cart, deleteFromCart }) => {
   return (
     <>
       <Typography variant="h6">סיכום הזמנה</Typography>
-      <div>
-        <List>
+      <div >
+        <List >
           {cart.map(i => (
             <ListItem>
-              <ListItemAvatar>
-                <FiberManualRecordIcon style={{color:"#3f51b5"}}></FiberManualRecordIcon>
-              </ListItemAvatar>
               <ListItemText
                 primary={i.name}
                 secondary={i.count + " " + i.unit}
@@ -46,6 +43,9 @@ const Cart = ({ cart, deleteFromCart }) => {
                   />
                 </IconButton>
               </ListItemSecondaryAction>
+              <ListItemAvatar>
+                <FiberManualRecordIcon style={{color:"#3f51b5"}}></FiberManualRecordIcon>
+              </ListItemAvatar>
             </ListItem>
           ))}
         </List>

@@ -11,27 +11,29 @@ import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
+import RemoveIcon from "@material-ui/icons/Remove";
 import CreateIcon from "@material-ui/icons/Create";
 import { ToastContainer, toast } from "react-toastify";
 
 import clsx from "clsx";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 300
+    maxWidth: 280,
+    minWidth: 280,
   },
   media: {
-    height: 170
+    height: 200,
   },
   margin: {
-    margin: theme.spacing(1)
+    margin: theme.spacing(1),
   },
   withoutLabel: {
-    marginTop: theme.spacing(3)
+    marginTop: theme.spacing(3),
   },
   textField: {
-    width: "25ch"
-  }
+    width: "25ch",
+  },
 }));
 const notify = () =>
   toast.success("הפריט נוסף לעגלה", {
@@ -40,10 +42,11 @@ const notify = () =>
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: false,
-    draggable: false
+    draggable: false,
   });
 
-const ItemCard = ({ item, addToCart, isItemInCart }) => {
+
+const ItemCard = ({ item, addToCart, decreaseItemFromCart, cart }) => {
   const classes = useStyles();
 
   return (
@@ -63,49 +66,44 @@ const ItemCard = ({ item, addToCart, isItemInCart }) => {
           >
             {item.name}
           </Typography>
-          {item.priceDisplay &&
-            item.priceDisplay.map(p => (
-              <Typography variant="body2" component="p">
-                {p}
-              </Typography>
-            ))}
+
           <Typography variant="body2" color="textSecondary" component="p">
             {item.description || ""}
           </Typography>
         </CardContent>
         <CardActions
-          style={{ backgroundColor: "beige", justifyContent: "center" }}
+          style={{ backgroundColor: "beige", justifyContent: "flex-end" }}
         >
-          <TextField
-            label=""
-            style={{ maxWidth: 160 }}
-            type="number"
-            id="standard-start-adornment"
-            defaultValue={item.count}
-            onChange={e => (item.count = parseInt(e.target.value))}
-            className={clsx(classes.margin, classes.textField)}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">{item.unit}</InputAdornment>
-              ),
-              inputProps: {
-                step: item.step,
-                min: "0"
-              }
-            }}
-          />
-
           <Fab
             color="primary"
             aria-label="add"
             size="small"
-            onClick={e => {
+            onClick={(e) => {
               addToCart(item);
               notify();
             }}
           >
-            {isItemInCart(item.id) ? <CreateIcon /> : <AddIcon />}
+            <AddIcon />
           </Fab>
+          <Typography style={{ marginLeft: 8, marginRight: 8 }}>
+            {cart.find(i=>i.id===item.id)?cart.find(i=>i.id===item.id).count : 0}
+          </Typography>
+          <Fab
+            color="primary"
+            aria-label="add"
+            size="small"
+            onClick={(e) => {
+                decreaseItemFromCart(item);
+            }}
+          >
+            <RemoveIcon />
+          </Fab>
+          <Typography style={{ marginRight: "auto" }}>
+            {(item.price ? `₪${item.price} / ` : "") +
+              item.unitCount +
+              " " +
+              item.unit}
+          </Typography>
         </CardActions>
       </Card>
     </>
