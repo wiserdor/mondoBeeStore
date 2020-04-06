@@ -11,6 +11,7 @@ import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
+import CreateIcon from "@material-ui/icons/Create";
 import { ToastContainer, toast } from "react-toastify";
 
 import clsx from "clsx";
@@ -42,7 +43,7 @@ const notify = () =>
     draggable: false
   });
 
-const ItemCard = ({ item, addToCart }) => {
+const ItemCard = ({ item, addToCart, isItemInCart }) => {
   const classes = useStyles();
 
   return (
@@ -103,7 +104,7 @@ const ItemCard = ({ item, addToCart }) => {
               notify();
             }}
           >
-            <AddIcon />
+            {isItemInCart(item.id) ? <CreateIcon /> : <AddIcon />}
           </Fab>
         </CardActions>
       </Card>
