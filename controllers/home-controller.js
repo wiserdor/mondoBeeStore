@@ -10,33 +10,41 @@ exports.homeGet = async (req, res) => {
       {
         From: {
           Email: "vgibsonsg@gmail.com",
-          Name: "Mondo"
+          Name: "Mondo",
         },
         To: [
           {
             Email: "Adigolan0910@gmail.com",
-            Name: "Adi"
+            Name: "Adi",
           },
           {
             Email: "ronabasmat@gmail.com",
-            Name: "Rona"
-          }
+            Name: "Rona",
+          },
         ],
         Subject: "הזמנה חדשה בחנות של מונדו",
         HTMLPart:
           `<body dir="rtl"><h1>הזמנה מ${j.details.name}</h1>` +
           j.cart.map(
-            i =>
-              `<div><span>${i.name + " " + i.count + " " + i.unit}</span></div>`
+            (i) =>
+              `<div><span>${i.name + " " + i.count + " " + i.unit+" "+ (i.price?"₪"+i.price:'אין מחיר')}</span></div>`
           ) +
-          `<div><h2>פרטים:</h2></div><div> שם מלא: ${j.details.name}</div><div>טלפון: ${j.details.phone} </div><div> כתובת: ${j.details.address}</div></body>`
-      }
-    ]
+          `<p> סה"כ: ₪${j.cart
+            .map((a) => (a.price && a.count ? a.price * a.count : 0))
+            .reduce(
+              (a, b) => a + b
+            )}</p><div><h2>פרטים:</h2></div><div> שם מלא: ${
+            j.details.name
+          }</div><div>טלפון: ${j.details.phone} </div><div> כתובת: ${
+            j.details.address
+          }</div></body>`,
+      },
+    ],
   });
   request
-    .then(r => {
+    .then((r) => {
       console.log("sent");
     })
-    .error(e => console.log(e))
+    .error((e) => console.log(e))
     .finally(() => res.status(200).send("ok"));
 };
