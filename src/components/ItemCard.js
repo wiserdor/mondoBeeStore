@@ -59,7 +59,7 @@ const ItemCard = ({ item, addToCart, decreaseItemFromCart, cart }) => {
             {item.name}
           </Typography>
 
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2" color="textSecondary" component="p" style={{minHeight:20}}>
             {item.description || ""}
           </Typography>
         </CardContent>
