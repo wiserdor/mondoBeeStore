@@ -237,6 +237,7 @@ const Catalog = () => {
   };
 
   const deleteFromCart = (id) => {
+    catalogList.find(i=>i.id===id).count=0;
     setCart(cart.filter((i) => i.id !== id));
   };
 
