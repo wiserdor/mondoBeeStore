@@ -71,7 +71,7 @@ export const catalogList = [
       count: 0,
       unitCount: 1,
       description: 'שקים של 5 ק"ג',
-      price: 25,
+      price: 20,
       step: "1",
       unit: "שקים",
       img_path: "/oranges2.jpeg",
