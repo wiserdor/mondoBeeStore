@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 280,
   },
   media: {
-    height: 200,
+    height: 220,
   },
   margin: {
     margin: theme.spacing(1),

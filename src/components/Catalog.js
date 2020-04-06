@@ -12,6 +12,7 @@ const catalogList = [
     description: "כי אין כמו מצה עם אבוקדו",
     count: 0,
     unitCount: 1.5,
+    price: 20,
     unit: 'ק"ג',
     img_path: "/avocado.jpeg",
   },
@@ -71,15 +72,6 @@ const catalogList = [
     img_path: "/sherry2.jpeg",
   },
   {
-    id: 4,
-    name: "עגבניות שרי יובל מנומרות",
-    count: 0,
-    step: "1",
-    unitCount: 1,
-    unit: "נספק",
-    img_path: "/shery-tomato1.jpeg",
-  },
-  {
     id: 5,
     name: "תפוז",
     count: 0,
@@ -109,7 +101,7 @@ const catalogList = [
     price: 19,
     unit: "נספק",
     unitCount: 1,
-    img_path: "/default.png",
+    img_path: "/shery-tomato1.jpeg",
   },
   {
     id: 8,
