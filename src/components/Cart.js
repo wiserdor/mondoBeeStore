@@ -30,7 +30,7 @@ const Cart = ({ cart, deleteFromCart }) => {
           {cart.map(i => (
             <ListItem>
               <ListItemAvatar>
-                <FiberManualRecordIcon></FiberManualRecordIcon>
+                <FiberManualRecordIcon style={{color:"#3f51b5"}}></FiberManualRecordIcon>
               </ListItemAvatar>
               <ListItemText
                 primary={i.name}

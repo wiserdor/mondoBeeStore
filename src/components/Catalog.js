@@ -206,7 +206,7 @@ const Catalog = () => {
         justify="center"
         align="center"
       >
-        <Cart cart={cart} deleteFromCart={deleteFromCart} />
+        {cart.length ? <Cart cart={cart} deleteFromCart={deleteFromCart} /> : null}
       </Grid>
     </>
   );
