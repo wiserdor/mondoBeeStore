@@ -35,15 +35,7 @@ const useStyles = makeStyles((theme) => ({
     width: "25ch",
   },
 }));
-const notify = () =>
-  toast.success("הפריט נוסף לעגלה", {
-    position: "top-right",
-    autoClose: 2000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: false,
-    draggable: false,
-  });
+
 
 
 const ItemCard = ({ item, addToCart, decreaseItemFromCart, cart }) => {
@@ -80,7 +72,6 @@ const ItemCard = ({ item, addToCart, decreaseItemFromCart, cart }) => {
             size="small"
             onClick={(e) => {
               addToCart(item);
-              notify();
             }}
           >
             <AddIcon />

@@ -206,6 +206,15 @@ const Catalog = () => {
 
   const addToCart = (item) => {
     if (item.count < 0) return;
+    if (item.count === 0)
+      toast.success("הפריט נוסף לעגלה", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+      });
     item.count++;
     const newArr = [...cart.filter((i) => i.id !== item.id), item];
     setCart(newArr);
@@ -216,15 +225,14 @@ const Catalog = () => {
     if (item.count === 1) {
       item.count--;
       setCart(cart.filter((i) => i.id !== item.id));
-      const notify = () =>
-        toast.error("הפריט הוסר מהעגלה", {
-          position: "top-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: false,
-        });
+      toast.error("הפריט הוסר מהעגלה", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+      });
     } else {
       item.count--;
       const newArr = [...cart.filter((i) => i.id !== item.id), item];
@@ -237,7 +245,7 @@ const Catalog = () => {
   };
 
   const deleteFromCart = (id) => {
-    catalogList.find(i=>i.id===id).count=0;
+    catalogList.find((i) => i.id === id).count = 0;
     setCart(cart.filter((i) => i.id !== id));
   };
 
