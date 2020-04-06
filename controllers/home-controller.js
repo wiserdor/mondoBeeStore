@@ -13,21 +13,37 @@ exports.homeGet = async (req, res) => {
           Name: "Mondo",
         },
         To: [
-          {
-            Email: "Adigolan0910@gmail.com",
-            Name: "Adi",
-          },
-          {
-            Email: "ronabasmat@gmail.com",
-            Name: "Rona",
-          },
+            {
+              Email: "Adigolan0910@gmail.com",
+              Name: "Adi",
+            },
+            {
+              Email: "ronabasmat@gmail.com",
+              Name: "Rona",
+            },
+        //   {
+        //     Email: "vgibsonsg@gmail.com",
+        //     Name: "Mondo",
+        //   },
         ],
         Subject: "הזמנה חדשה בחנות של מונדו",
         HTMLPart:
           `<body dir="rtl"><h1>הזמנה מ${j.details.name}</h1>` +
           j.cart.map(
             (i) =>
-              `<div><span>${i.name + " " + i.count + " " + i.unit+" "+ (i.price?"₪"+i.price:'אין מחיר')}</span></div>`
+              `<div><span>${
+                i.name +
+                " - " +
+                "כמות:" +
+                i.count +
+                " | " +
+                i.count * i.unitCount +
+                " " +
+                i.unit +
+                " (" +
+                (i.price ? "₪" + i.price * i.count : "אין מחיר") +
+                ")"
+              }</span></div>`
           ) +
           `<p> סה"כ: ₪${j.cart
             .map((a) => (a.price && a.count ? a.price * a.count : 0))

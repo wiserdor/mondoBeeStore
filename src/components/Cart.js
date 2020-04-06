@@ -32,7 +32,9 @@ const Cart = ({ cart, deleteFromCart }) => {
             <ListItem>
               <ListItemText
                 primary={i.name}
-                secondary={i.count + " " + i.unit}
+                secondary={
+                  'כמות:'+i.count  + " | " + i.count* i.unitCount + " " + i.unit
+                }
               />
               <ListItemSecondaryAction>
                 <IconButton edge="end" aria-label="delete">
@@ -54,7 +56,12 @@ const Cart = ({ cart, deleteFromCart }) => {
         </List>
         {cart.length ? (
           <>
-            <Typography>סה"כ: ₪{cart.map(a=>(a.price&&a.count)?a.price*a.count:0).reduce((a, b) => a + b)}</Typography>
+            <Typography>
+              סה"כ: ₪
+              {cart
+                .map((a) => (a.price && a.count ? a.price * a.count : 0))
+                .reduce((a, b) => a + b)}
+            </Typography>
             <Details cart={cart} />
           </>
         ) : null}

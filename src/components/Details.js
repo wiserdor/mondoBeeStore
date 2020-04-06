@@ -58,7 +58,7 @@ export default function Details({ cart }) {
 
   return (
     <>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      <Button variant="outlined" size="large" color="primary" onClick={handleClickOpen}>
         בצע הזמנה
       </Button>
       <Dialog
