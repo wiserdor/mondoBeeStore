@@ -46,7 +46,6 @@ const Cart = ({ cart, deleteFromCart }) => {
                   i.unit
                 }
               />
-
               <ListItemSecondaryAction>
                 <IconButton edge="end" aria-label="delete">
                   <DeleteIcon

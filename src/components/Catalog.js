@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import ItemCard from "./ItemCard";
 import Cart from "./Cart";
 import Grid from "@material-ui/core/Grid";
@@ -11,7 +11,9 @@ import Chip from "@material-ui/core/Chip";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 const Catalog = () => {
   const [cart, setCart] = useState([]);
-
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   const addToCart = (item) => {
     if (item.count < 0) return;
     if (item.count === 0)

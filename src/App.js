@@ -12,9 +12,7 @@ import logo from "./resources/logo.jpeg";
 import "typeface-roboto";
 
 function App() {
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+
 
   return (
     <div className="App">
