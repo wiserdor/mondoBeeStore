@@ -6,6 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { catalogList } from "../catalogList";
 import Badge from "@material-ui/core/Badge";
 import Fab from "@material-ui/core/Fab";
+import Chip from '@material-ui/core/Chip';
 
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 const Catalog = () => {
@@ -63,6 +64,15 @@ const Catalog = () => {
   };
 
   const floatStyle = {
+    margin: 0,
+    top: "auto",
+    right: 20,
+    bottom: 20,
+    left: "auto",
+    position: "fixed",
+  };
+
+  const chipFloatStyle = {
     margin: 0,
     top: "auto",
     right: 20,
