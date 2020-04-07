@@ -25,7 +25,7 @@ const Cart = ({ cart, deleteFromCart }) => {
 
   return (
     <>
-      <Typography variant="h6">סיכום הזמנה</Typography>
+      <Typography variant="h6" id="cart">סיכום הזמנה</Typography>
       <div>
         <List>
           {cart.map((i) => (
