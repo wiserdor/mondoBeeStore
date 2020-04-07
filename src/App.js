@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
@@ -12,11 +12,13 @@ import logo from "./resources/logo.jpeg";
 import "typeface-roboto";
 
 function App() {
-  
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <div className="App">
-      <Container maxWidth="md" align="center" style={{ textAlign: "center" }}>
+      <Container id="mainContainer" maxWidth="md" align="center" style={{ textAlign: "center" }}>
         <img src={logo} className="logo-background" />
         <Grid item xs={12}>
           <Typography variant="h4" component="h4" style={{ marginTop: 20 }}>
