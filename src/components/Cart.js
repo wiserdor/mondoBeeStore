@@ -66,6 +66,7 @@ const Cart = ({ cart, deleteFromCart }) => {
         </List>
         {cart.length ? (
           <>
+            <small>*ייתכנו שינויים קלים במחיר בהתאם למשקל</small>
             <Typography>
               סה"כ: ₪
               {cart

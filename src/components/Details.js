@@ -25,13 +25,16 @@ export default function Details({ cart }) {
   };
 
   const sendEmail = async () => {
+    window.alert("תודה שהזמנתם מהחנות של מונדו! ניצור איתכם קשר בהקדם, התשלום  המדוייק יהיה בהתאם למשקל וישלח אליכם ברגע שההזמנה מוכנה. התשלום במזומן או ביט לטלפון 054-3300801");
+
     if (name && address && phone) {
       try {
         let a = await Axios.post("/api/send", {
           cart: cart,
           details: { name, phone, address }
         });
-        window.alert("ההזמנה בוצעה בהצלחה!");
+        window.alert("תודה שהזמנתם מהחנות של מונדו! ניצור איתכם קשר בהקדם, התשלום  המדוייק יהיה בהתאם למשקל וישלח אליכם ברגע שההזמנה מוכנה. התשלום במזומן או ביט לטלפון 054-3300801");
+
         window.location.reload();
       }
       catch{
