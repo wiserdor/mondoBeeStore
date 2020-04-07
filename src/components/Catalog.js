@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { catalogList } from "../catalogList";
 import Badge from "@material-ui/core/Badge";
 import Fab from "@material-ui/core/Fab";
-import Chip from '@material-ui/core/Chip';
+import Chip from "@material-ui/core/Chip";
 
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 const Catalog = () => {
@@ -23,15 +23,15 @@ const Catalog = () => {
         pauseOnHover: false,
         draggable: false,
       });
-    item.count++;
+    item.count += item.step;
     const newArr = [...cart.filter((i) => i.id !== item.id), item];
     setCart(newArr);
   };
 
   const decreaseItemFromCart = (item) => {
     if (item.count <= 0) return;
-    if (item.count === 1) {
-      item.count--;
+    if (item.count === item.step) {
+      item.count -= item.step;
       setCart(cart.filter((i) => i.id !== item.id));
       toast.error("הפריט הוסר מהעגלה", {
         position: "top-right",
@@ -42,7 +42,7 @@ const Catalog = () => {
         draggable: false,
       });
     } else {
-      item.count--;
+      item.count -= item.step;
       const newArr = [...cart.filter((i) => i.id !== item.id), item];
       setCart(newArr);
     }
@@ -54,8 +54,7 @@ const Catalog = () => {
 
   const scrollToCart = () => {
     const element = document.getElementById("cart");
-    if(element)
-        element.scrollIntoView({ behavior: "smooth" });
+    if (element) element.scrollIntoView({ behavior: "smooth" });
   };
 
   const deleteFromCart = (id) => {
@@ -107,7 +106,12 @@ const Catalog = () => {
           <Cart cart={cart} deleteFromCart={deleteFromCart} />
         ) : null}
       </Grid>
-      <Fab style={floatStyle} onClick={scrollToCart} color="secondary" aria-label="edit">
+      <Fab
+        style={floatStyle}
+        onClick={scrollToCart}
+        color="secondary"
+        aria-label="edit"
+      >
         <Badge badgeContent={cart.length} color="secondary">
           <ShoppingCartIcon />
         </Badge>

@@ -25,17 +25,28 @@ const Cart = ({ cart, deleteFromCart }) => {
 
   return (
     <>
-      <Typography variant="h6" id="cart">סיכום הזמנה</Typography>
+      <Typography variant="h6" id="cart">
+        סיכום הזמנה
+      </Typography>
       <div>
         <List>
           {cart.map((i) => (
             <ListItem>
+              <Typography style={{ marginRight: 35 }}>
+                ₪{i.price * i.count}
+              </Typography>
               <ListItemText
                 primary={i.name}
                 secondary={
-                  'כמות:'+i.count  + " | " + i.count* i.unitCount + " " + i.unit
+                  "כמות:" +
+                  i.count +
+                  " | " +
+                  i.count * i.unitCount +
+                  " " +
+                  i.unit
                 }
               />
+
               <ListItemSecondaryAction>
                 <IconButton edge="end" aria-label="delete">
                   <DeleteIcon
