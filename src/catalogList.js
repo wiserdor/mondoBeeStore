@@ -186,5 +186,15 @@ export const catalogList = [
       unit: "נספק",
       img_path: "/pink-lady.jpeg",
     },
+    {
+        id: 18,
+        name: "שום ישראלי טרי",
+        count: 0,
+        price: 27,
+        step: "1",
+        unitCount: 1,
+        unit: "קילו",
+        img_path: "/garlic.jpeg",
+      },
   ];
   
