@@ -20,7 +20,7 @@ function App() {
           id="mainContainer"
           maxWidth="md"
           align="center"
-          style={{ textAlign: "center" }}
+          style={{ textAlign: "center", paddingBottom:70 }}
         >
           <img src={logo} className="logo-background" />
           <Grid item xs={12}>
