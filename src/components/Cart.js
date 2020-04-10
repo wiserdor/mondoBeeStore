@@ -159,9 +159,9 @@ const Cart = () => {
             ))}
           </List>
         </DialogContent>
-        <DialogContent dividers={true} style={{height:"100%"}}>
+        <DialogContent dividers={true} >
         {cart.length ? (
-            <>
+            <div style={{marginTop:5,marginBottom:5}}>
               <small>*ייתכנו שינויים קלים במחיר בהתאם למשקל</small>
               <Typography>
                 סה"כ: ₪
@@ -170,7 +170,7 @@ const Cart = () => {
                   .reduce((a, b) => a + b)}
               </Typography>
               <Details cart={cart} />
-            </>
+            </div>
           ) : null}{" "}
         </DialogContent>
         <DialogActions>
