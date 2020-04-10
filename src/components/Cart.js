@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import List from "@material-ui/core/List";
 import Grid from "@material-ui/core/Grid";
 import ListItem from "@material-ui/core/ListItem";
@@ -11,8 +11,16 @@ import IconButton from "@material-ui/core/IconButton";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import Details from "./Details";
 import { ToastContainer, toast } from "react-toastify";
+import { StoreContext } from "../context/StoreContext";
 
-const Cart = ({ cart, deleteFromCart }) => {
+const Cart = () => {
+  const { cart, dispatchCart, catalog } = useContext(StoreContext);
+
+  const deleteFromCart = (item) => {
+    catalog.find((i) => i.id === item.id).count = 0;
+    dispatchCart({ type: "REMOVE_ITEM", item: item });
+  };
+
   const notify = () =>
     toast.error("הפריט הוסר מהעגלה", {
       position: "top-right",
@@ -50,7 +58,7 @@ const Cart = ({ cart, deleteFromCart }) => {
                 <IconButton edge="end" aria-label="delete">
                   <DeleteIcon
                     onClick={() => {
-                      deleteFromCart(i.id);
+                      deleteFromCart(i);
                       notify();
                     }}
                   />

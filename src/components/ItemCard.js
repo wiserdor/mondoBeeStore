@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Card from "@material-ui/core/Card";
 import { makeStyles } from "@material-ui/core/styles";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -14,8 +14,9 @@ import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import CreateIcon from "@material-ui/icons/Create";
 import { ToastContainer, toast } from "react-toastify";
-
 import clsx from "clsx";
+
+import { StoreContext } from "../context/StoreContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,10 +37,47 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-
-const ItemCard = ({ item, addToCart, decreaseItemFromCart, cart }) => {
+const ItemCard = ({ item }) => {
   const classes = useStyles();
+  const { cart, dispatchCart } = useContext(StoreContext);
+
+  const addToCart = (item) => {
+    if (item.count < 0) return;
+    item.count += item.step;
+    if (item.count === item.step){
+      toast.success("הפריט נוסף לעגלה", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+      });
+    dispatchCart({type:"ADD_ITEM",item:item})
+    }
+    else{
+        dispatchCart({type:"REPLACE_ITEM",item:item})
+    }
+  };
+
+  const decreaseItemFromCart = (item) => {
+    if (item.count <= 0) return;
+    if (item.count === item.step) {
+      item.count -= item.step;
+      dispatchCart({type:"REMOVE_ITEM",item:item})
+      toast.error("הפריט הוסר מהעגלה", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+      });
+    } else {
+      item.count -= item.step;
+      dispatchCart({type:"REPLACE_ITEM",item:item})
+    }
+  };
 
   return (
     <>
@@ -59,7 +97,12 @@ const ItemCard = ({ item, addToCart, decreaseItemFromCart, cart }) => {
             {item.name}
           </Typography>
 
-          <Typography variant="body2" color="textSecondary" component="p" style={{minHeight:20}}>
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            component="p"
+            style={{ minHeight: 20 }}
+          >
             {item.description || ""}
           </Typography>
         </CardContent>
@@ -77,14 +120,16 @@ const ItemCard = ({ item, addToCart, decreaseItemFromCart, cart }) => {
             <AddIcon />
           </Fab>
           <Typography style={{ marginLeft: 8, marginRight: 8 }}>
-            {cart.find(i=>i.id===item.id)?cart.find(i=>i.id===item.id).count : 0}
+            {cart.find((i) => i.id === item.id)
+              ? cart.find((i) => i.id === item.id).count
+              : 0}
           </Typography>
           <Fab
             color="primary"
             aria-label="add"
             size="small"
             onClick={(e) => {
-                decreaseItemFromCart(item);
+              decreaseItemFromCart(item);
             }}
           >
             <RemoveIcon />
