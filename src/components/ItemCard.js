@@ -125,8 +125,9 @@ const ItemCard = ({ item }) => {
               : 0}
           </Typography>
           <Fab
+            disabled={cart.find((i) => i.id === item.id)?"":"true"}
             color="primary"
-            aria-label="add"
+            aria-label="subtract"
             size="small"
             onClick={(e) => {
               decreaseItemFromCart(item);
