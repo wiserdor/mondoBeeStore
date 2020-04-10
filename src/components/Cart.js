@@ -114,17 +114,17 @@ const Cart = () => {
         open={open && cart.length !== 0}
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
-        maxWidth="sm"
+        maxWidth="md"
         fullWidth={true}
         style={{ textAlign: "center" }}
       >
-        <DialogContent>
+        <DialogContent style={{paddingRight:1,paddingLeft:1}}>
           <Typography variant="h6" id="cart">
             סיכום הזמנה
           </Typography>
-          <List>
+          <List >
             {cart.map((i) => (
-              <ListItem>
+              <ListItem style={{padding:0}}>
                 <ListItemText
                   primary={i.name}
                   secondary={
@@ -144,7 +144,7 @@ const Cart = () => {
                     <RemoveIcon  />
                   </IconButton>
                 </ListItemSecondaryAction>
-                <ListItemAvatar style={{ marginRight: 20 }}>
+                <ListItemAvatar style={{ marginRight: "3vh" }}>
                   {"₪" + i.price * i.count}
                   <IconButton style={{marginRight:10}} edge="end" aria-label="delete" onClick={() => {
                         deleteFromCart(i);
