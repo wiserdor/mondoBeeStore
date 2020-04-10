@@ -159,7 +159,7 @@ const Cart = () => {
             ))}
           </List>
         </DialogContent>
-        <DialogContent dividers={true} >
+        <DialogContent dividers={true} style={{minHeight:"100px"}}       >
         {cart.length ? (
             <div style={{marginTop:5,marginBottom:5}}>
               <small>*ייתכנו שינויים קלים במחיר בהתאם למשקל</small>
