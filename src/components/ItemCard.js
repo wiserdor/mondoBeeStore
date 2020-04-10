@@ -44,7 +44,7 @@ const ItemCard = ({ item }) => {
   const addToCart = (item) => {
     if (item.count < 0) return;
     item.count += item.step;
-    if (item.count === item.step){
+    if (item.count === item.step) {
       toast.success("הפריט נוסף לעגלה", {
         position: "top-right",
         autoClose: 2000,
@@ -53,10 +53,9 @@ const ItemCard = ({ item }) => {
         pauseOnHover: false,
         draggable: false,
       });
-    dispatchCart({type:"ADD_ITEM",item:item})
-    }
-    else{
-        dispatchCart({type:"REPLACE_ITEM",item:item})
+      dispatchCart({ type: "ADD_ITEM", item: item });
+    } else {
+      dispatchCart({ type: "REPLACE_ITEM", item: item });
     }
   };
 
@@ -64,7 +63,7 @@ const ItemCard = ({ item }) => {
     if (item.count <= 0) return;
     if (item.count === item.step) {
       item.count -= item.step;
-      dispatchCart({type:"REMOVE_ITEM",item:item})
+      dispatchCart({ type: "REMOVE_ITEM", item: item });
       toast.error("הפריט הוסר מהעגלה", {
         position: "top-right",
         autoClose: 2000,
@@ -75,7 +74,7 @@ const ItemCard = ({ item }) => {
       });
     } else {
       item.count -= item.step;
-      dispatchCart({type:"REPLACE_ITEM",item:item})
+      dispatchCart({ type: "REPLACE_ITEM", item: item });
     }
   };
 
@@ -125,7 +124,7 @@ const ItemCard = ({ item }) => {
               : 0}
           </Typography>
           <Fab
-            disabled={cart.find((i) => i.id === item.id)?"":"true"}
+            disabled={cart.find((i) => i.id === item.id) ? "" : "true"}
             color="primary"
             aria-label="subtract"
             size="small"
