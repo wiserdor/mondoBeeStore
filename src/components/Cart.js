@@ -158,7 +158,9 @@ const Cart = () => {
               </ListItem>
             ))}
           </List>
-          {cart.length ? (
+        </DialogContent>
+        <DialogContent dividers={true} style={{height:"100%"}}>
+        {cart.length ? (
             <>
               <small>*ייתכנו שינויים קלים במחיר בהתאם למשקל</small>
               <Typography>
