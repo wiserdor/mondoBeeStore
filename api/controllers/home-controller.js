@@ -73,5 +73,5 @@ exports.send = async (req, res) => {
 
 exports.catalog = async (req,res) => {
     const cat = await getCatalog();
-    res.send(process.env.DATABASE_URL+"?sslmode=require")
+    res.status(200).send(cat)
 }
