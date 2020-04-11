@@ -13,7 +13,7 @@ export const StoreProvider = (props) => {
     const init = async () => {
       try {
         const res = await Axios.get("/api/catalog");
-        let data = res.data.sort((a, b) => a.id < b.id);
+        let data = res.data.sort((a, b) => a.id - b.id);
         if (!data) {
           data = catalogList;
         }
