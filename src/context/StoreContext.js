@@ -11,19 +11,21 @@ export const StoreProvider = (props) => {
 
   useEffect(() => {
     const init = async () => {
-      try {
-        const res = await Axios.get("/api/catalog");
-        let data = res.data.sort((a, b) => a.id - b.id);
-        if (!data) {
-          data = catalogList;
+        try{
+            const res = await Axios.get("/api/catalog");
+            let data = res.data.sort((a,b)=>a.name.localeCompare(b.name))
+            if(!data){
+                data=catalogList
+            }
+            data.forEach((i) => i.count = 0);
+      
+            setCatalog(data);
         }
-        data.forEach((i) => (i.count = 0));
-
-        setCatalog(data);
-      } catch (err) {
-        console.log(err);
-        setCatalog(catalogList);
-      }
+        catch(err){
+            console.log(err)
+            setCatalog(catalogList);
+        }
+      
     };
 
     init();
