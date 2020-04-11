@@ -83,7 +83,7 @@ const ItemCard = ({ item }) => {
       <Card className={classes.root}>
         <CardMedia
           className={classes.media}
-          image={item.img_path}
+          image={item.img_path?item.img_path:"/default.png"}
           title={item.name}
         />
         <CardContent>
