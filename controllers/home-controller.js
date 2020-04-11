@@ -51,7 +51,9 @@ exports.homeGet = async (req, res) => {
               (a, b) => a + b
             )}</p><div><h2>פרטים:</h2></div><div> שם מלא: ${
             j.details.name
-          }</div><div>טלפון: ${j.details.phone} </div><div> כתובת: ${
+          }</div><div>טלפון: ${j.details.phone} </div><div> עיר: ${
+            j.details.city
+          }</div><div> כתובת: ${
             j.details.address
           }</div></body>`,
       },

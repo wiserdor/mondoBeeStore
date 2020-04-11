@@ -15,6 +15,7 @@ export default function Details({ cart }) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
 
   const mailTo = "Adigolan0910@gmail.com";
   const handleClickOpen = () => {
@@ -26,11 +27,11 @@ export default function Details({ cart }) {
   };
 
   const sendEmail = async () => {
-    if (name && address && phone) {
+    if (name && address && phone && city) {
       try {
         let a = await Axios.post("/api/send", {
           cart: cart,
-          details: { name, phone, address },
+          details: { name, phone, address,city },
         });
         window.alert(
           "תודה שהזמנתם מהחנות של מונדו! ניצור איתכם קשר בהקדם, התשלום  המדוייק יהיה בהתאם למשקל וישלח אליכם ברגע שההזמנה מוכנה. התשלום במזומן או ביט לטלפון 054-3300801"
@@ -88,6 +89,15 @@ export default function Details({ cart }) {
             fullWidth
             value={name}
             onChange={(e) => setName(e.target.value)}
+          />
+          <TextField
+            margin="dense"
+            id="address"
+            label="ישוב"
+            type="address"
+            fullWidth
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
           />
           <TextField
             margin="dense"
