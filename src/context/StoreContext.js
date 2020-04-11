@@ -13,6 +13,7 @@ export const StoreProvider = (props) => {
     const init = async () => {
         try{
             const res = await Axios.get("/api/catalog");
+            console.log(res)
             let data = res.data
             if(!data){
                 data=catalogList
@@ -21,7 +22,8 @@ export const StoreProvider = (props) => {
       
             setCatalog(data);
         }
-        catch{
+        catch(err){
+            console.log(err)
             setCatalog(catalogList);
         }
       
