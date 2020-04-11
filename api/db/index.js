@@ -9,7 +9,7 @@ exports.getCatalog = async () => {
     const res = await pool.query("SELECT * FROM public.catalog");
     return res;
   } catch (err) {
-    console.log(err.stack);
+    return err.stack;
   }
 };
 
