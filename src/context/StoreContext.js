@@ -13,7 +13,7 @@ export const StoreProvider = (props) => {
     const init = async () => {
         try{
             const res = await Axios.get("/api/catalog");
-            console.log(res)
+            console.log(res.data)
             let data = res.data
             if(!data){
                 data=catalogList
