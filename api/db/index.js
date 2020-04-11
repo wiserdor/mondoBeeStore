@@ -1,7 +1,7 @@
 const { Pool } = require("pg");
 const pool = new Pool({
-  connectionString:process.env.DATABASE_URL,
-  ssl: true,
+  connectionString:process.env.DATABASE_URL+"?sslmode=require",
+  ssl: { rejectUnauthorized: false },
 });
 
 exports.getCatalog = async () => {
@@ -9,7 +9,7 @@ exports.getCatalog = async () => {
     const res = await pool.query("SELECT * FROM public.catalog");
     return res;
   } catch (err) {
-    return err.stack;
+    console.log(err.stack);
   }
 };
 
