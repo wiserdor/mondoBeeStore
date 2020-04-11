@@ -25,7 +25,7 @@ function App() {
           <img src={logo} className="logo-background" />
           <Grid item xs={12}>
             <Typography variant="h4" component="h4" style={{ marginTop: 20 }}>
-              מבחר רב של פירות העונה המשתנים בהתאם לסחורה בשוק
+              מבחר רב של פירות העונה המתעדכנים באופן יום יומי בהתאם לסחורה בשוק
             </Typography>
             <Typography
               variant="h6"
