@@ -12,7 +12,10 @@ export const StoreProvider = (props) => {
   useEffect(() => {
     const init = async () => {
       const res = await Axios.get("/api/catalog");
-      const data = res.data
+      let data = res.data
+      if(!data){
+          data=catalogList
+      }
       data.forEach((i) => i.count = 0);
 
       setCatalog(data);
