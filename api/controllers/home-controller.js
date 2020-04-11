@@ -1,10 +1,16 @@
+const {getCatalog, addToCatalog, addOrder} = require("../db");
+
 const mailjet = require("node-mailjet").connect(
-  "2c99fdc71852f0d0462f1dba726f3d6e",
-  "c6d15935dda204af494e6c026424a816"
+    process.env.MAILJET_API,
+    process.env.MAILJET_SECRET
 );
 
-exports.homeGet = async (req, res) => {
+exports.send = async (req, res) => {
   const j = req.body;
+  // Save to db
+  addOrder(j)
+
+  // Send as mail
   const request = mailjet.post("send", { version: "v3.1" }).request({
     Messages: [
       {
@@ -13,18 +19,18 @@ exports.homeGet = async (req, res) => {
           Name: "Mondo",
         },
         To: [
-            {
-              Email: "Adigolan0910@gmail.com",
-              Name: "Adi",
-            },
-            {
-              Email: "ronabasmat@gmail.com",
-              Name: "Rona",
-            },
-        //   {
-        //     Email: "vgibsonsg@gmail.com",
-        //     Name: "Mondo",
-        //   },
+          {
+            Email: "Adigolan0910@gmail.com",
+            Name: "Adi",
+          },
+          {
+            Email: "ronabasmat@gmail.com",
+            Name: "Rona",
+          },
+          //   {
+          //     Email: "vgibsonsg@gmail.com",
+          //     Name: "Mondo",
+          //   },
         ],
         Subject: "הזמנה חדשה בחנות של מונדו",
         HTMLPart:
@@ -37,7 +43,7 @@ exports.homeGet = async (req, res) => {
                 "כמות:" +
                 i.count +
                 " | " +
-                i.count * i.unitCount +
+                i.count * i.unit_count +
                 " " +
                 i.unit +
                 " (" +
@@ -53,9 +59,7 @@ exports.homeGet = async (req, res) => {
             j.details.name
           }</div><div>טלפון: ${j.details.phone} </div><div> עיר: ${
             j.details.city
-          }</div><div> כתובת: ${
-            j.details.address
-          }</div></body>`,
+          }</div><div> כתובת: ${j.details.address}</div></body>`,
       },
     ],
   });
@@ -66,3 +70,8 @@ exports.homeGet = async (req, res) => {
     .error((e) => console.log(e))
     .finally(() => res.status(200).send("ok"));
 };
+
+exports.catalog = async (req,res) => {
+    const cat = await getCatalog();
+    res.status(200).send(cat.rows)
+}

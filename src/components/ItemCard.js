@@ -136,7 +136,7 @@ const ItemCard = ({ item }) => {
           </Fab>
           <Typography style={{ marginRight: "auto" }}>
             {(item.price ? `₪${item.price} / ` : "") +
-              item.unitCount +
+              item.unit_count +
               " " +
               item.unit}
           </Typography>

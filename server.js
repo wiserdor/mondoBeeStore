@@ -7,7 +7,7 @@ const compression = require('compression')
 const helmet = require('helmet')
 const cors = require('cors')
 // Import routes
-const homeRouter = require('./routes/home')
+const homeRouter = require('./api/routes/home')
 // Setup default port
 const PORT = process.env.PORT || 8080
 // Create express app

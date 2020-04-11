@@ -131,7 +131,7 @@ const Cart = () => {
                     "כמות:" +
                     i.count +
                     " | " +
-                    i.count * i.unitCount +
+                    i.count * i.unit_count +
                     " " +
                     i.unit
                   }
