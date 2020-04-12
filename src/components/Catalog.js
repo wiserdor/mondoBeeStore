@@ -17,9 +17,6 @@ const Catalog = () => {
     if (element) element.scrollIntoView({ behavior: "smooth" });
   };
 
- 
-
-
   return (
     <>
       <Grid container spacing={2}>

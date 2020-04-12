@@ -11,6 +11,7 @@ import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import Details from "./Details";
+import Chip from "@material-ui/core/Chip";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -76,6 +77,16 @@ const Cart = () => {
     }
   };
 
+  const getTotalCost = ()=>{
+    return cart
+    .map((a) =>
+      a.price && a.count
+        ? a.price * a.count * a.estimate_quantity_per_unit
+        : 0
+    )
+    .reduce((a, b) => a + b,0)
+  }
+
   const handleClickOpen = () => {
     if (cart.length !== 0) setOpen(true);
   };
@@ -100,6 +111,18 @@ const Cart = () => {
 
   return (
     <>
+      <Chip
+        label={'₪'+getTotalCost()}
+        variant="outlined"
+        style={{
+          margin: 0,
+          top: "auto",
+          right: 75,
+          bottom: 30,
+          left: "auto",
+          position: "fixed",
+        }}
+      />
       <Fab
         style={floatStyle}
         onClick={handleClickOpen}
@@ -177,7 +200,11 @@ const Cart = () => {
               <Typography>
                 סה"כ: ₪
                 {cart
-                  .map((a) => (a.price && a.count ? a.price * a.count * a.estimate_quantity_per_unit : 0))
+                  .map((a) =>
+                    a.price && a.count
+                      ? a.price * a.count * a.estimate_quantity_per_unit
+                      : 0
+                  )
                   .reduce((a, b) => a + b)}
               </Typography>
               <Details cart={cart} />
