@@ -118,55 +118,66 @@ const Cart = () => {
         fullWidth={true}
         style={{ textAlign: "center" }}
       >
-        <DialogContent style={{paddingRight:1,paddingLeft:1}}>
+        <DialogContent style={{ paddingRight: 1, paddingLeft: 1 }}>
           <Typography variant="h6" id="cart">
             סיכום הזמנה
           </Typography>
-          <List >
+          <List>
             {cart.map((i) => (
-              <ListItem style={{padding:0}}>
+              <ListItem style={{ padding: 0 }}>
                 <ListItemText
                   primary={i.name}
                   secondary={
                     "כמות:" +
                     i.count +
                     " | " +
-                    i.count * i.unit_count +
+                    i.count * i.unit_count * i.estimate_quantity_per_unit +
                     " " +
                     i.unit
                   }
                 />
                 <ListItemSecondaryAction>
-                  <IconButton onClick={() => addToCart(i)} edge="end" aria-label="add">
+                  <IconButton
+                    onClick={() => addToCart(i)}
+                    edge="end"
+                    aria-label="add"
+                  >
                     <AddIcon />
                   </IconButton>
-                  <IconButton onClick={() => decreaseItemFromCart(i)} edge="end" aria-label="decrease">
-                    <RemoveIcon  />
+                  <IconButton
+                    onClick={() => decreaseItemFromCart(i)}
+                    edge="end"
+                    aria-label="decrease"
+                  >
+                    <RemoveIcon />
                   </IconButton>
                 </ListItemSecondaryAction>
                 <ListItemAvatar style={{ marginRight: "3vh" }}>
-                  {"₪" + i.price * i.count}
-                  <IconButton style={{marginRight:10}} edge="end" aria-label="delete" onClick={() => {
-                        deleteFromCart(i);
-                        notify();
-                      }}>
-                    <DeleteIcon
-                      
-                    />
+                  {"₪" + i.price * i.count * i.estimate_quantity_per_unit}
+                  <IconButton
+                    style={{ marginRight: 10 }}
+                    edge="end"
+                    aria-label="delete"
+                    onClick={() => {
+                      deleteFromCart(i);
+                      notify();
+                    }}
+                  >
+                    <DeleteIcon />
                   </IconButton>
                 </ListItemAvatar>
               </ListItem>
             ))}
           </List>
         </DialogContent>
-        <DialogContent dividers={true} style={{minHeight:"100px"}}       >
-        {cart.length ? (
-            <div style={{marginTop:5,marginBottom:5}}>
+        <DialogContent dividers={true} style={{ minHeight: "100px" }}>
+          {cart.length ? (
+            <div style={{ marginTop: 5, marginBottom: 5 }}>
               <small>*ייתכנו שינויים קלים במחיר בהתאם למשקל</small>
               <Typography>
                 סה"כ: ₪
                 {cart
-                  .map((a) => (a.price && a.count ? a.price * a.count : 0))
+                  .map((a) => (a.price && a.count ? a.price * a.count * a.estimate_quantity_per_unit : 0))
                   .reduce((a, b) => a + b)}
               </Typography>
               <Details cart={cart} />

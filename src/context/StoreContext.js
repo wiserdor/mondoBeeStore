@@ -23,7 +23,9 @@ export const StoreProvider = (props) => {
         }
         catch(err){
             console.log(err)
-            setCatalog(catalogList);
+            let data = catalogList.sort((a,b)=>a.name.localeCompare(b.name))
+            data.forEach((i) => i.count = 0);
+            setCatalog(data);
         }
       
     };
