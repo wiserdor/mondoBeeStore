@@ -120,6 +120,7 @@ const Cart = () => {
           right: 75,
           bottom: 30,
           left: "auto",
+          backgroundColor:"white",
           position: "fixed",
         }}
       />
