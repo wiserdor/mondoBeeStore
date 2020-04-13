@@ -16,6 +16,9 @@ import CreateIcon from "@material-ui/icons/Create";
 import { ToastContainer, toast } from "react-toastify";
 import ReactGA from 'react-ga';
 import Divider from "@material-ui/core/Divider";
+import lightGreen from '@material-ui/core/colors/lightGreen';
+import grey from '@material-ui/core/colors/grey';
+
 import clsx from "clsx";
 
 import { StoreContext } from "../context/StoreContext";
@@ -118,14 +121,14 @@ const ItemCard = ({ item }) => {
           style={{ backgroundColor: "beige", justifyContent: "center" }}
         >
           <Fab
-            color="primary"
+            style={{backgroundColor:lightGreen[500]}}
             aria-label="add"
             size="small"
             onClick={(e) => {
               addToCart(item);
             }}
           >
-            <AddIcon />
+            <AddIcon style={{color:"white"}} />
           </Fab>
           <Typography style={{ marginLeft: 8, marginRight: 8 }}>
             {cart.find((i) => i.id === item.id)
@@ -135,13 +138,14 @@ const ItemCard = ({ item }) => {
           <Fab
             disabled={cart.find((i) => i.id === item.id) ? "" : "true"}
             color="primary"
+            style={{backgroundColor:cart.find((i) => i.id === item.id)?grey[900]:null}}
             aria-label="subtract"
             size="small"
             onClick={(e) => {
               decreaseItemFromCart(item);
             }}
           >
-            <RemoveIcon />
+            <RemoveIcon style={{color:"white"}} />
           </Fab>
          
         </CardActions>
