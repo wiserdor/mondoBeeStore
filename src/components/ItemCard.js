@@ -101,7 +101,12 @@ const ItemCard = ({ item }) => {
           >
             {item.name}
           </Typography>
-
+          <Typography style={{ marginRight: "auto" }}>
+            {(item.price ? `₪${item.price} / ` : "") +
+              item.unit_count +
+              " " +
+              item.unit}
+          </Typography>
           <Typography
             variant="body2"
             color="textSecondary"
@@ -112,7 +117,7 @@ const ItemCard = ({ item }) => {
           </Typography>
         </CardContent>
         <CardActions
-          style={{ backgroundColor: "beige", justifyContent: "flex-end" }}
+          style={{ backgroundColor: "beige", justifyContent: "center" }}
         >
           <Fab
             color="primary"
@@ -140,12 +145,7 @@ const ItemCard = ({ item }) => {
           >
             <RemoveIcon />
           </Fab>
-          <Typography style={{ marginRight: "auto" }}>
-            {(item.price ? `₪${item.price} / ` : "") +
-              item.unit_count +
-              " " +
-              item.unit}
-          </Typography>
+         
         </CardActions>
       </Card>
       <Divider style={{marginTop:20}} />
