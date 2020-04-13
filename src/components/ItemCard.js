@@ -40,14 +40,14 @@ const useStyles = makeStyles((theme) => ({
 
 const ItemCard = ({ item }) => {
   const classes = useStyles();
-  const { cart, dispatchCart } = useContext(StoreContext);
+  const { cart, dispatchCart, userForAnalytic } = useContext(StoreContext);
 
   const addToCart = (item) => {
     if (item.count < 0) return;
     item.count += item.step;
     if (item.count === item.step) {
       ReactGA.event({
-        category: "User",
+        category: userForAnalytic,
         action: "Added to cart " + item.name,
       });
       toast.success("הפריט נוסף לעגלה", {

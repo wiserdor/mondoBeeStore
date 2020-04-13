@@ -34,7 +34,7 @@ const floatStyle = {
 
 const Cart = () => {
   const [open, setOpen] = useState(false);
-  const { cart, dispatchCart, catalog } = useContext(StoreContext);
+  const { cart, dispatchCart, catalog, userForAnalytic } = useContext(StoreContext);
 
   const deleteFromCart = (item) => {
     catalog.find((i) => i.id === item.id).count = 0;
@@ -89,7 +89,7 @@ const Cart = () => {
 
   const handleClickOpen = () => {
     ReactGA.event({
-        category: 'User',
+        category: userForAnalytic,
         action: 'Opened cart'
       });
     if (cart.length !== 0) setOpen(true);
@@ -102,6 +102,10 @@ const Cart = () => {
   useEffect(() => {
     if (cart.length === 0) handleClose();
   }, [cart]);
+
+  useEffect(()=>{
+
+  },[])
 
   const notify = () =>
     toast.error("הפריט הוסר מהעגלה", {
