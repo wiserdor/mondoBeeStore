@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -9,6 +9,9 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Typography from "@material-ui/core/Typography";
 import { ToastContainer, toast } from "react-toastify";
 import Axios from "axios";
+import ReactGA from 'react-ga';
+
+import {StoreContext} from "../context/StoreContext"
 
 export default function Details({ cart }) {
   const [open, setOpen] = useState(false);
@@ -16,9 +19,14 @@ export default function Details({ cart }) {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
+  const {userForAnalytic} = useContext(StoreContext)
 
   const handleClickOpen = () => {
     setOpen(true);
+    ReactGA.event({
+        category: userForAnalytic,
+        action: 'Opened details'
+      });
   };
 
   const handleClose = () => {
@@ -27,6 +35,10 @@ export default function Details({ cart }) {
 
   const sendEmail = async () => {
     if (name && address && phone && city) {
+        ReactGA.event({
+            category: userForAnalytic,
+            action: 'Sending cart to email'
+          });
       try {
         let a = await Axios.post("/api/send", {
           cart: cart,
