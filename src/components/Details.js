@@ -17,7 +17,6 @@ export default function Details({ cart }) {
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
 
-  const mailTo = "Adigolan0910@gmail.com";
   const handleClickOpen = () => {
     setOpen(true);
   };

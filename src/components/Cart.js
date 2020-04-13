@@ -17,7 +17,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import Button from "@material-ui/core/Button";
 import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
+import ReactGA from 'react-ga';
 import { ToastContainer, toast } from "react-toastify";
 import { StoreContext } from "../context/StoreContext";
 import Badge from "@material-ui/core/Badge";
@@ -88,6 +88,10 @@ const Cart = () => {
   }
 
   const handleClickOpen = () => {
+    ReactGA.event({
+        category: 'User',
+        action: 'Opened cart'
+      });
     if (cart.length !== 0) setOpen(true);
   };
 
