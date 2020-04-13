@@ -1,14 +1,14 @@
-const {getCatalog, addToCatalog, addOrder} = require("../db");
+const { getCatalog, addToCatalog, addOrder } = require("../db");
 
 const mailjet = require("node-mailjet").connect(
-    process.env.MAILJET_API,
-    process.env.MAILJET_SECRET
+  process.env.MAILJET_API,
+  process.env.MAILJET_SECRET
 );
 
 exports.send = async (req, res) => {
   const j = req.body;
   // Save to db
-  addOrder(j)
+  addOrder(j);
 
   // Send as mail
   const request = mailjet.post("send", { version: "v3.1" }).request({
@@ -52,9 +52,14 @@ exports.send = async (req, res) => {
               }</span></div>`
           ) +
           `<p> סה"כ: ₪${j.cart
-            .map((a) => (a.price && a.count ? a.price * a.count * a.estimate_quantity_per_unit : 0))
+            .map((a) =>
+              a.price && a.count
+                ? a.price * a.count * a.estimate_quantity_per_unit
+                : 0
+            )
             .reduce(
-              (a, b) => a + b
+              (a, b) => a + b,
+              0
             )}</p><div><h2>פרטים:</h2></div><div> שם מלא: ${
             j.details.name
           }</div><div>טלפון: ${j.details.phone} </div><div> עיר: ${
@@ -71,7 +76,7 @@ exports.send = async (req, res) => {
     .finally(() => res.status(200).send("ok"));
 };
 
-exports.catalog = async (req,res) => {
-    const cat = await getCatalog();
-    res.status(200).send(cat.rows)
-}
+exports.catalog = async (req, res) => {
+  const cat = await getCatalog();
+  res.status(200).send(cat.rows);
+};
