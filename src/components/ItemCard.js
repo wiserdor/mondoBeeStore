@@ -15,6 +15,7 @@ import RemoveIcon from "@material-ui/icons/Remove";
 import CreateIcon from "@material-ui/icons/Create";
 import { ToastContainer, toast } from "react-toastify";
 import ReactGA from 'react-ga';
+import Divider from "@material-ui/core/Divider";
 import clsx from "clsx";
 
 import { StoreContext } from "../context/StoreContext";
@@ -147,6 +148,7 @@ const ItemCard = ({ item }) => {
           </Typography>
         </CardActions>
       </Card>
+      <Divider style={{marginTop:20}} />
     </>
   );
 };
