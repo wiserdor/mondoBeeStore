@@ -14,6 +14,7 @@ import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import CreateIcon from "@material-ui/icons/Create";
 import { ToastContainer, toast } from "react-toastify";
+import ReactGA from 'react-ga';
 import clsx from "clsx";
 
 import { StoreContext } from "../context/StoreContext";
@@ -45,6 +46,10 @@ const ItemCard = ({ item }) => {
     if (item.count < 0) return;
     item.count += item.step;
     if (item.count === item.step) {
+      ReactGA.event({
+        category: "User",
+        action: "Added to cart " + item.name,
+      });
       toast.success("הפריט נוסף לעגלה", {
         position: "top-right",
         autoClose: 2000,
@@ -83,7 +88,7 @@ const ItemCard = ({ item }) => {
       <Card className={classes.root}>
         <CardMedia
           className={classes.media}
-          image={item.img_path?item.img_path:"/default.png"}
+          image={item.img_path ? item.img_path : "/default.png"}
           title={item.name}
         />
         <CardContent>
