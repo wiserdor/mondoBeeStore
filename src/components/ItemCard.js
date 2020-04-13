@@ -94,18 +94,10 @@ const ItemCard = ({ item }) => {
         />
         <CardContent>
           <Typography
-            gutterBottom
             variant="h5"
             component="h3"
-            style={{ height: 50 }}
           >
             {item.name}
-          </Typography>
-          <Typography style={{ marginRight: "auto" }}>
-            {(item.price ? `₪${item.price} / ` : "") +
-              item.unit_count +
-              " " +
-              item.unit}
           </Typography>
           <Typography
             variant="body2"
@@ -114,6 +106,12 @@ const ItemCard = ({ item }) => {
             style={{ minHeight: 20 }}
           >
             {item.description || ""}
+          </Typography>
+          <Typography style={{ marginTop:10 }}>
+            {(item.price ? `₪${item.price} / ` : "") +
+              item.unit_count +
+              " " +
+              item.unit}
           </Typography>
         </CardContent>
         <CardActions
