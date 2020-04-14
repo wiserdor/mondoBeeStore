@@ -77,6 +77,10 @@ exports.send = async (req, res) => {
 };
 
 exports.catalog = async (req, res) => {
-  const cat = await getCatalog();
-  res.status(200).send(cat.rows);
+  try{
+    const cat = await getCatalog();
+    res.status(200).send(cat.rows);
+  } catch (err){
+    res.status(500).send(err)
+  }
 };

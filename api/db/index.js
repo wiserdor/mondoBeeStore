@@ -26,7 +26,6 @@ exports.addOrder = async (order) => {
 };
 
 exports.addToCatalog = async (item) => {
-  try {
     const res = await pool.query(
       "INSERT INTO catalog(name, price, step, unit, img_path, description,unit_count) VALUES($1, $2, $3, $4, $5,$6,$7) RETURNING id",
       [
@@ -39,7 +38,5 @@ exports.addToCatalog = async (item) => {
         item.unit_count,
       ]
     );
-  } catch (err) {
 
-  }
 };
