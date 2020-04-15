@@ -20,7 +20,7 @@ function App() {
           id="mainContainer"
           maxWidth="md"
           align="center"
-          style={{ textAlign: "center", paddingBottom:70 }}
+          style={{ textAlign: "center", paddingBottom: 70 }}
         >
           <img src={logo} className="logo-background" />
           <Grid item xs={12}>
@@ -30,9 +30,17 @@ function App() {
             <Typography
               variant="h6"
               component="h4"
-              style={{ marginBottom: 20 }}
+              style={{ color: "red" }}
             >
-              משלוחים לישובי לב השרון, תל מונד,קדימה-צורן ואבן יהודה
+              משלוחים לישובי לב השרון, תל מונד,קדימה-צורן ואבן יהודה בלבד,
+            </Typography>
+
+            <Typography
+              variant="h6"
+              component="h4"
+              style={{ marginBottom: 20, color: "red" }}
+            >
+              משלוחים עבור ישובים מרוחקים יינתנו עבור הזמנות מרוכזות.
             </Typography>
           </Grid>
           <Divider style={{ marginBottom: 40 }} />
