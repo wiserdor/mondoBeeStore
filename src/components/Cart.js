@@ -88,17 +88,6 @@ const Cart = () => {
   }
 
   const handleClickOpen = () => {
-    if(getTotalCost()<100){
-        toast.error('מינימום הזמנה 100 ש"ח, אנא הוסף פריטים לעגלה', {
-            position: "top-right",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: false,
-          });
-        return;
-    }
     ReactGA.event({
         category: userForAnalytic,
         action: 'Opened cart'

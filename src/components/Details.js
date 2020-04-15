@@ -21,7 +21,29 @@ export default function Details({ cart }) {
   const [city, setCity] = useState("");
   const {userForAnalytic} = useContext(StoreContext)
 
+
+  const getTotalCost = ()=>{
+    return cart
+    .map((a) =>
+      a.price && a.count
+        ? a.price * a.count * a.estimate_quantity_per_unit
+        : 0
+    )
+    .reduce((a, b) => a + b,0)
+  }
+
   const handleClickOpen = () => {
+    if(getTotalCost()<100){
+        toast.error('מינימום הזמנה 100 ש"ח, אנא הוסף פריטים לעגלה', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+          });
+        return;
+    }
     setOpen(true);
     ReactGA.event({
         category: userForAnalytic,
