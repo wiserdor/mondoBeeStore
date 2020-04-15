@@ -26,23 +26,23 @@ exports.addOrder = async (order) => {
 };
 
 exports.addToCatalog = async (items) => {
-    console.log(items[0])
-    console.log(items.map(
-        (item) =>
-          `(${item.name}, ${item.price}, ${item.step}, ${item.unit}, ${item.img_path},${item.description},${item.unit_count}) `
-      ))
-    try{
-        const res = await pool.query(
-            "INSERT INTO catalog(name, price, step, unit, img_path, description,unit_count) VALUES " +
-              items.map(
-                (item) =>
-                  `(${item.name}, ${item.price}, ${item.step}, ${item.unit}, ${item.img_path},${item.description},${item.unit_count}) `
-              )
-          );
-    }
-    catch(err){
-        console.log(err)
-        throw(err)
-    }
- 
+  try {
+    items.foreach((item) => {
+      pool.query(
+        "INSERT INTO catalog(name, price, step, unit, img_path, description,unit_count) VALUES($1,$2,$3,$4,$5,$6,$7)",
+        [
+          item.name,
+          item.price,
+          item.step,
+          item.unit,
+          item.img_path,
+          item.description,
+          item.unit_count,
+        ]
+      );
+    });
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
 };
