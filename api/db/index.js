@@ -26,7 +26,6 @@ exports.addOrder = async (order) => {
 };
 
 exports.addToCatalog = async (items) => {
-  try {
     const res = await pool.query(
       "INSERT INTO catalog(name, price, step, unit, img_path, description,unit_count) VALUES " +
         items.map(
