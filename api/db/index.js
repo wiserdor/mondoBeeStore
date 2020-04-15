@@ -1,7 +1,7 @@
 const { Pool } = require("pg");
 const pool = new Pool({
-  connectionString:"postgresql://user@localhost:5432/mondobee",
-//   ssl: { rejectUnauthorized: false },
+  connectionString: "postgresql://user@localhost:5432/mondobee",
+  //   ssl: { rejectUnauthorized: false },
 });
 
 exports.getCatalog = async () => {
@@ -17,7 +17,7 @@ exports.addOrder = async (order) => {
   try {
     const res = await pool.query(
       "INSERT INTO public.orders(cart,details, order_date) VALUES($1,$2,$3) RETURNING id",
-      [order.cart,order.details, new Date()]
+      [order.cart, order.details, new Date()]
     );
     console.log(res);
   } catch (err) {
@@ -25,21 +25,14 @@ exports.addOrder = async (order) => {
   }
 };
 
-exports.addToCatalog = async (item) => {
+exports.addToCatalog = async (items) => {
   try {
     const res = await pool.query(
-      "INSERT INTO catalog(name, price, step, unit, img_path, description,unit_count) VALUES($1, $2, $3, $4, $5,$6,$7) RETURNING id",
-      [
-        item.name,
-        item.price,
-        item.step,
-        item.unit,
-        item.img_path,
-        item.description,
-        item.unit_count,
-      ]
+      "INSERT INTO catalog(name, price, step, unit, img_path, description,unit_count) VALUES " +
+        items.map(
+          (item) =>
+            `(${item.name}, ${item.price}, ${item.step}, ${item.unit}, ${item.img_path},${item.description},${item.unit_count}) `
+        )
     );
-  } catch (err) {
-
-  }
+  } catch (err) {}
 };
