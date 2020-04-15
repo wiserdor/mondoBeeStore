@@ -81,7 +81,7 @@ exports.catalog = async (req, res) => {
     const cat = await getCatalog();
     res.status(200).send(cat.rows);
   } catch (err){
-    res.status(500).send(err)
+    res.status(500).send("error")
   }
 };
 
