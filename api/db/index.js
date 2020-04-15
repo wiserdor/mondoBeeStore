@@ -1,6 +1,6 @@
 const { Pool } = require("pg");
 const pool = new Pool({
-  connectionString: "postgresql://user@localhost:5432/mondobee",
+  connectionString: process.env.DATABASE_URL,
   //   ssl: { rejectUnauthorized: false },
 });
 
@@ -26,12 +26,11 @@ exports.addOrder = async (order) => {
 };
 
 exports.addToCatalog = async (items) => {
-    const res = await pool.query(
-      "INSERT INTO catalog(name, price, step, unit, img_path, description,unit_count) VALUES " +
-        items.map(
-          (item) =>
-            `(${item.name}, ${item.price}, ${item.step}, ${item.unit}, ${item.img_path},${item.description},${item.unit_count}) `
-        )
-    );
-  } catch (err) {}
+  const res = await pool.query(
+    "INSERT INTO catalog(name, price, step, unit, img_path, description,unit_count) VALUES " +
+      items.map(
+        (item) =>
+          `(${item.name}, ${item.price}, ${item.step}, ${item.unit}, ${item.img_path},${item.description},${item.unit_count}) `
+      )
+  );
 };

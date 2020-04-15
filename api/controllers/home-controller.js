@@ -84,3 +84,13 @@ exports.catalog = async (req, res) => {
     res.status(500).send(err)
   }
 };
+
+exports.addToCatalog = async (req, res) => {
+    try{
+      const cat = await addToCatalog(req.body);
+      res.status(200).send("ok");
+    } catch (err){
+      res.status(500).send(err)
+    }
+  };
+  
