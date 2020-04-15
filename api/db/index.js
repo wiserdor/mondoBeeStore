@@ -27,7 +27,7 @@ exports.addOrder = async (order) => {
 
 exports.addToCatalog = async (items) => {
   try {
-    items.foreach((item) => {
+    items.forEach((item) => {
       pool.query(
         "INSERT INTO catalog(name, price, step, unit, img_path, description,unit_count) VALUES($1,$2,$3,$4,$5,$6,$7)",
         [
