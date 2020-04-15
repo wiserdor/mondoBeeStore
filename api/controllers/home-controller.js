@@ -19,18 +19,18 @@ exports.send = async (req, res) => {
           Name: "Mondo",
         },
         To: [
-        //   {
-        //     Email: "Adigolan0910@gmail.com",
-        //     Name: "Adi",
-        //   },
-        //   {
-        //     Email: "ronabasmat@gmail.com",
-        //     Name: "Rona",
-        //   },
-            {
-              Email: "vgibsonsg@gmail.com",
-              Name: "Mondo",
-            },
+          {
+            Email: "Adigolan0910@gmail.com",
+            Name: "Adi",
+          },
+          {
+            Email: "ronabasmat@gmail.com",
+            Name: "Rona",
+          },
+          //   {
+          //     Email: "vgibsonsg@gmail.com",
+          //     Name: "Mondo",
+          //   },
         ],
         Subject: "הזמנה חדשה בחנות של מונדו",
         HTMLPart:
