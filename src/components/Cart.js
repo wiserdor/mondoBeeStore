@@ -43,8 +43,8 @@ const Cart = () => {
 
   const addToCart = (item) => {
     if (item.count < 0) return;
-    item.count += item.step;
-    if (item.count === item.step) {
+    item.count += item.count_step;
+    if (item.count === item.count_step) {
       toast.success("הפריט נוסף לעגלה", {
         position: "top-right",
         autoClose: 2000,
@@ -60,8 +60,8 @@ const Cart = () => {
   };
 
   const decreaseItemFromCart = (item) => {
-    if (item.count === item.step) {
-      item.count -= item.step;
+    if (item.count === item.count_step) {
+      item.count -= item.count_step;
       dispatchCart({ type: "REMOVE_ITEM", item: item });
       toast.error("הפריט הוסר מהעגלה", {
         position: "top-right",
@@ -72,7 +72,7 @@ const Cart = () => {
         draggable: false,
       });
     } else {
-      item.count -= item.step;
+      item.count -= item.count_step;
       dispatchCart({ type: "REPLACE_ITEM", item: item });
     }
   };
@@ -165,7 +165,7 @@ const Cart = () => {
                     " | " +
                     i.count * i.unit_count * i.estimate_quantity_per_unit +
                     " " +
-                    i.unit
+                    i.unit_name
                   }
                 />
                 <ListItemSecondaryAction>

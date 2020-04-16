@@ -48,8 +48,8 @@ const ItemCard = ({ item }) => {
 
   const addToCart = (item) => {
     if (item.count < 0) return;
-    item.count += item.step;
-    if (item.count === item.step) {
+    item.count += item.count_step;
+    if (item.count === item.count_step) {
       ReactGA.event({
         category: userForAnalytic,
         action: "Added to cart " + item.name,
@@ -70,8 +70,8 @@ const ItemCard = ({ item }) => {
 
   const decreaseItemFromCart = (item) => {
     if (item.count <= 0) return;
-    if (item.count === item.step) {
-      item.count -= item.step;
+    if (item.count === item.count_step) {
+      item.count -= item.count_step;
       dispatchCart({ type: "REMOVE_ITEM", item: item });
       toast.error("הפריט הוסר מהעגלה", {
         position: "top-right",
@@ -82,7 +82,7 @@ const ItemCard = ({ item }) => {
         draggable: false,
       });
     } else {
-      item.count -= item.step;
+      item.count -= item.count_step;
       dispatchCart({ type: "REPLACE_ITEM", item: item });
     }
   };
@@ -114,7 +114,7 @@ const ItemCard = ({ item }) => {
             {(item.price ? `₪${item.price} / ` : "") +
               item.unit_count +
               " " +
-              item.unit}
+              item.unit_name}
           </Typography>
         </CardContent>
         <CardActions

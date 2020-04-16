@@ -45,7 +45,7 @@ exports.send = async (req, res) => {
                 " | " +
                 i.count * i.unit_count * i.estimate_quantity_per_unit +
                 " " +
-                i.unit +
+                i.unit_name +
                 " (" +
                 (i.price ? "₪" + i.price * i.count : "אין מחיר") +
                 ")"

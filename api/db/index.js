@@ -29,12 +29,12 @@ exports.addToCatalog = async (items) => {
   try {
     items.forEach((item) => {
       pool.query(
-        "INSERT INTO catalog(name, price, step, unit, img_path, description,unit_count) VALUES($1,$2,$3,$4,$5,$6,$7)",
+        "INSERT INTO catalog(name, price, count_step, unit_name, img_path, description,unit_count) VALUES($1,$2,$3,$4,$5,$6,$7)",
         [
           item.name,
           item.price,
-          item.step,
-          item.unit,
+          item.count_step,
+          item.unit_name,
           item.img_path,
           item.description,
           item.unit_count,

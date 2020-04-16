@@ -2,7 +2,7 @@ export const catalogList = [
   {
     name: "אבוקדו האס",
     price: 20,
-    step: 1,
+    count_step: 1,
     unit: 'ק"ג',
     img_path: "/avocado.jpeg",
     description: "כי אין כמו מצה עם אבוקדו",
@@ -13,7 +13,7 @@ export const catalogList = [
   {
     name: "תפוח עץ סמיט",
     price: 15,
-    step: 1,
+    count_step: 1,
     unit: "נספק",
     img_path: "/gala.jpeg",
     description: null,
@@ -24,7 +24,7 @@ export const catalogList = [
   {
     name: "תפוח עץ פינק ליידי",
     price: 19,
-    step: 1,
+    count_step: 1,
     unit: "נספק",
     img_path: "/pink-lady.jpeg",
     description: null,
@@ -35,7 +35,7 @@ export const catalogList = [
   {
     name: "תפוז",
     price: 20,
-    step: 1,
+    count_step: 1,
     unit: "שקים",
     img_path: "/oranges2.jpeg",
     description: 'שקים של 5 ק"ג',
@@ -46,7 +46,7 @@ export const catalogList = [
   {
     name: "אננס קטן",
     price: 25,
-    step: 1,
+    count_step: 1,
     unit: "יחידות",
     img_path: "/pineapple.jpeg",
     description: null,
@@ -57,7 +57,7 @@ export const catalogList = [
   {
     name: "שמן זית כבישה קרה 1 ליטר",
     price: 48,
-    step: 1,
+    count_step: 1,
     unit: "ליטר",
     img_path: "/olive-oil.jfif",
     description: null,
@@ -68,7 +68,7 @@ export const catalogList = [
   {
     name: "שמן זית כבישה קרה 2 ליטר",
     price: 85,
-    step: 1,
+    count_step: 1,
     unit: "ליטר",
     img_path: "/olive-oil.jfif",
     description: null,
@@ -79,7 +79,7 @@ export const catalogList = [
   {
     name: "שום ישראלי טרי",
     price: 27,
-    step: 0.5,
+    count_step: 0.5,
     unit: "קילו",
     img_path: "/garlic.jpeg",
     description: null,
@@ -90,7 +90,7 @@ export const catalogList = [
   {
     name: "פקאן",
     price: 30,
-    step: 1,
+    count_step: 1,
     unit: 'ק"ג',
     img_path: "/pecan.jpeg",
     description: "אורגני וטרי",
@@ -101,7 +101,7 @@ export const catalogList = [
   {
     name: "שסק",
     price: 25,
-    step: 1,
+    count_step: 1,
     unit: "נספק",
     img_path: "/shesek.jpeg",
     description: null,
@@ -112,7 +112,7 @@ export const catalogList = [
   {
     name: "דבש קילו",
     price: 45,
-    step: 1,
+    count_step: 1,
     unit: 'ק"ג',
     img_path: "/honey.jpeg",
     description: null,
@@ -123,7 +123,7 @@ export const catalogList = [
   {
     name: "אננס גדול",
     price: 40,
-    step: 1,
+    count_step: 1,
     unit: "יחידות",
     img_path: "/pineapple.jpeg",
     description: null,
@@ -134,7 +134,7 @@ export const catalogList = [
   {
     name: "דבש חצי קילו",
     price: 25,
-    step: 1,
+    count_step: 1,
     unit: 'ק"ג',
     img_path: "/honey.jpeg",
     description: null,
@@ -145,7 +145,7 @@ export const catalogList = [
   {
     name: "עגבניות שרי ליקופן",
     price: 19,
-    step: 1,
+    count_step: 1,
     unit: "נספק",
     img_path: "/shery-tomato1.jpeg",
     description: null,
@@ -156,7 +156,7 @@ export const catalogList = [
   {
     name: "עגבניות שרי תמר",
     price: 19,
-    step: 1,
+    count_step: 1,
     unit: "נספק",
     img_path: "/sherry2.jpeg",
     description: null,
@@ -167,7 +167,7 @@ export const catalogList = [
   {
     name: "תפוח עץ גאלה",
     price: 15,
-    step: 1,
+    count_step: 1,
     unit: "נספק",
     img_path: "/gala.jpeg",
     description: null,
@@ -178,7 +178,7 @@ export const catalogList = [
   {
     name: "בננה",
     price: 12,
-    step: 1,
+    count_step: 1,
     unit: "נספק",
     img_path: "/banana.jfif",
     description: null,
@@ -189,7 +189,7 @@ export const catalogList = [
   {
     name: "אגס",
     price: 17,
-    step: 1,
+    count_step: 1,
     unit: "נספק",
     img_path: "/pear.jpeg",
     description: null,
@@ -200,7 +200,7 @@ export const catalogList = [
   {
     name: "אבטיח",
     price: 10,
-    step: 1,
+    count_step: 1,
     unit: 'ק"ג',
     img_path: "/watermelon.jpeg",
     description: null,
@@ -211,7 +211,7 @@ export const catalogList = [
   {
     name: "חסה עגולה",
     price: 12,
-    step: 1,
+    count_step: 1,
     unit: "חבילה",
     img_path: "/lettus.jpeg",
     description: null,
@@ -222,7 +222,7 @@ export const catalogList = [
   {
     name: "כרובית",
     price: 15,
-    step: 1,
+    count_step: 1,
     unit: "יחידה",
     img_path: "/collyflower.jpeg",
     description: null,
@@ -233,7 +233,7 @@ export const catalogList = [
   {
     name: "מלפפון",
     price: 7,
-    step: 0.5,
+    count_step: 0.5,
     unit: 'ק"ג',
     img_path: "/cucumber.jpeg",
     description: null,
@@ -244,7 +244,7 @@ export const catalogList = [
   {
     name: "מלפפון בייבי",
     price: 12,
-    step: 1,
+    count_step: 1,
     unit: "חבילה",
     img_path: "/baby-cucumber.jpeg",
     description: null,
@@ -255,7 +255,7 @@ export const catalogList = [
   {
     name: "עגבניות חממה",
     price: 9,
-    step: 0.5,
+    count_step: 0.5,
     unit: 'ק"ג',
     img_path: "/tomatoes.jpeg",
     description: null,
@@ -266,7 +266,7 @@ export const catalogList = [
   {
     name: "ענבים שחורים",
     price: 32,
-    step: 1,
+    count_step: 1,
     unit: 'ק"ג',
     img_path: "/black-grapes.jpeg",
     description: "ללא חרצנים",
@@ -277,7 +277,7 @@ export const catalogList = [
   {
     name: "פלפל אדום",
     price: 10,
-    step: 0.5,
+    count_step: 0.5,
     unit: 'ק"ג',
     img_path: "/red-pepper.jpeg",
     description: null,
@@ -288,7 +288,7 @@ export const catalogList = [
   {
     name: "פלפל שושקה",
     price: 20,
-    step: 0.5,
+    count_step: 0.5,
     unit: 'ק"ג',
     img_path: "/pepper-shushka.jpeg",
     description: "פלפל אדום מתוק",
@@ -299,7 +299,7 @@ export const catalogList = [
   {
     name: "לבבות חסה",
     price: 12,
-    step: 1,
+    count_step: 1,
     unit: "נספק",
     img_path: "/lettus.jpeg",
     description: null,
@@ -310,7 +310,7 @@ export const catalogList = [
   {
     name: "אפרסק לבן",
     price: 37,
-    step: 0.5,
+    count_step: 0.5,
     unit: 'ק"ג',
     img_path: "/peach.jpeg",
     description: null,
@@ -321,7 +321,7 @@ export const catalogList = [
   {
     name: "מלון כתום",
     price: 15,
-    step: 1,
+    count_step: 1,
     unit: "יחידה",
     img_path: "/melon.jpeg",
     description: "ריחני וטעים במיוחד!",
