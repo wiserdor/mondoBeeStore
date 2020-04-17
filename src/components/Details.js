@@ -169,7 +169,7 @@ export default function Details({ cart }) {
             }}
             color="primary"
           >
-            אישור
+            שלח הזמנה
           </Button>
         </DialogActions>
       </Dialog>
