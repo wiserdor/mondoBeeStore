@@ -64,7 +64,7 @@ exports.send = async (req, res) => {
             j.details.name
           }</div><div>טלפון: ${j.details.phone} </div><div> עיר: ${
             j.details.city
-          }</div><div> כתובת: ${j.details.address}</div></body>`,
+          }</div><div> כתובת: ${j.details.address}</div><div> הערות: ${j.details.notes || ''}</div></body>`,
       },
     ],
   });

@@ -19,6 +19,7 @@ export default function Details({ cart }) {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
+  const [notes, setNotes] = useState("");
   const {userForAnalytic} = useContext(StoreContext)
 
 
@@ -149,6 +150,14 @@ export default function Details({ cart }) {
             type="phone"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
+          />
+          <TextField
+            margin="dense"
+            id="notes"
+            label="הערות"
+            fullWidth
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
           />
         </DialogContent>
         <DialogActions>
