@@ -1,4 +1,4 @@
-import React, { useState,useContext } from "react";
+import React, { useState, useContext } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -9,9 +9,9 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Typography from "@material-ui/core/Typography";
 import { ToastContainer, toast } from "react-toastify";
 import Axios from "axios";
-import ReactGA from 'react-ga';
+import ReactGA from "react-ga";
 
-import {StoreContext} from "../context/StoreContext"
+import { StoreContext } from "../context/StoreContext";
 
 export default function Details({ cart }) {
   const [open, setOpen] = useState(false);
@@ -20,36 +20,35 @@ export default function Details({ cart }) {
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [notes, setNotes] = useState("");
-  const {userForAnalytic} = useContext(StoreContext)
+  const { userForAnalytic } = useContext(StoreContext);
 
-
-  const getTotalCost = ()=>{
+  const getTotalCost = () => {
     return cart
-    .map((a) =>
-      a.price && a.count
-        ? a.price * a.count * a.estimate_quantity_per_unit
-        : 0
-    )
-    .reduce((a, b) => a + b,0)
-  }
+      .map((a) =>
+        a.price && a.count
+          ? a.price * a.count * a.estimate_quantity_per_unit
+          : 0
+      )
+      .reduce((a, b) => a + b, 0);
+  };
 
   const handleClickOpen = () => {
-    if(getTotalCost()<100){
-        toast.error('מינימום הזמנה 100 ש"ח, אנא הוסף פריטים לעגלה', {
-            position: "top-right",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: false,
-          });
-        return;
+    if (getTotalCost() < 100) {
+      toast.error('מינימום הזמנה 100 ש"ח, אנא הוסף פריטים לעגלה', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+      });
+      return;
     }
     setOpen(true);
     ReactGA.event({
-        category: userForAnalytic,
-        action: 'Opened details'
-      });
+      category: userForAnalytic,
+      action: "Opened details",
+    });
   };
 
   const handleClose = () => {
@@ -58,14 +57,14 @@ export default function Details({ cart }) {
 
   const sendEmail = async () => {
     if (name && address && phone && city) {
-        ReactGA.event({
-            category: userForAnalytic,
-            action: 'Sending cart to email'
-          });
+      ReactGA.event({
+        category: userForAnalytic,
+        action: "Sending cart to email",
+      });
       try {
         let a = await Axios.post("/api/send", {
           cart: cart,
-          details: { name, phone, address,city },
+          details: { name, phone, address, city, notes },
         });
         window.alert(
           "תודה שהזמנתם מהחנות של מונדו! ניצור איתכם קשר בהקדם, התשלום  המדוייק יהיה בהתאם למשקל וישלח אליכם ברגע שההזמנה מוכנה. התשלום במזומן או ביט לטלפון 054-3300801"
@@ -108,12 +107,12 @@ export default function Details({ cart }) {
         open={open}
         scroll="body"
         onClose={handleClose}
-        aria-labelledby="form-dialog-title" 
+        aria-labelledby="form-dialog-title"
       >
         <DialogContent style={{ textAlign: "center" }}>
-        <Typography variant="h6" id="cart">
-          פרטי משלוח
-        </Typography>
+          <Typography variant="h6" id="cart">
+            פרטי משלוח
+          </Typography>
           <DialogContentText></DialogContentText>
           <TextField
             autoFocus
