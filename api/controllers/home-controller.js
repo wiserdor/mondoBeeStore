@@ -6,6 +6,9 @@ const mailjet = require("node-mailjet").connect(
 );
 
 exports.send = async (req, res) => {
+    /**
+     * Create an order and send mail to the owners
+     */
   const j = req.body;
   // Save to db
   addOrder(j);
@@ -19,18 +22,18 @@ exports.send = async (req, res) => {
           Name: "Mondo",
         },
         To: [
-          {
-            Email: "Adigolan0910@gmail.com",
-            Name: "Adi",
-          },
-          {
-            Email: "ronabasmat@gmail.com",
-            Name: "Rona",
-          },
-            // {
-            //   Email: "vgibsonsg@gmail.com",
-            //   Name: "Mondo",
-            // },
+        //   {
+        //     Email: "Adigolan0910@gmail.com",
+        //     Name: "Adi",
+        //   },
+        //   {
+        //     Email: "ronabasmat@gmail.com",
+        //     Name: "Rona",
+        //   },
+            {
+              Email: "vgibsonsg@gmail.com",
+              Name: "Mondo",
+            },
         ],
         Subject: "הזמנה חדשה בחנות של מונדו",
         HTMLPart:
@@ -70,10 +73,9 @@ exports.send = async (req, res) => {
   });
   request
     .then((r) => {
-      console.log("sent");
+        res.status(200).send("ok")
     })
-    .error((e) => console.log(e))
-    .finally(() => res.status(200).send("ok"));
+    .error((e) => res.status(500).send("an error occur"))
 };
 
 exports.catalog = async (req, res) => {
@@ -83,14 +85,15 @@ exports.catalog = async (req, res) => {
   } catch (err){
     res.status(500).send("error")
   }
+  
 };
 
-exports.addToCatalog = async (req, res) => {
-    try{
-      const cat = await addToCatalog(req.body);
-      res.status(200).send("ok");
-    } catch (err){
-      res.status(500).send(req.body)
-    }
-  };
+// exports.addToCatalog = async (req, res) => {
+//     try{
+//       const cat = await addToCatalog(req.body);
+//       res.status(200).send("ok");
+//     } catch (err){
+//       res.status(500).send(req.body)
+//     }
+//   };
   
