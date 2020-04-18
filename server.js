@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 // Import express framework
 const express = require('express')
 // Import middleware
@@ -24,7 +26,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(bodyParser.json())
-console.log(process.env.DATABASE_URL)
+console.log(process.env.DB_URL)
 if (process.env.NODE_ENV && process.env.NODE_ENV !== 'development') {
     app.use(express.static(__dirname + '/build'))
 
