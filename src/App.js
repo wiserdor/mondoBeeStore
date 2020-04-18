@@ -13,6 +13,9 @@ import logo from "./resources/logo.jpeg";
 import "typeface-roboto";
 
 function App() {
+    useEffect(()=>{
+        window.location.href = "http://www.mondobee.com";
+    },[])
   return (
     <div className="App">
       <StoreProvider>
