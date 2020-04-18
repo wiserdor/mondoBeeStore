@@ -18,7 +18,6 @@ exports.send = async (req, res) => {
   const mail_arr=[];
   if (process.env.TO_EMAILS) to_mails = process.env.TO_EMAILS.split(" ");
   to_mails.forEach(m=>mail_arr.push({Email:m}))
-  console.log(mail_arr)
   const request = mailjet.post("send", { version: "v3.1" }).request({
     Messages: [
       {
