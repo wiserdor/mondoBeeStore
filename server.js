@@ -36,10 +36,8 @@ if (process.env.NODE_ENV && process.env.NODE_ENV !== 'development') {
 }
 // Implement route for '/api' endpoint
 app.use('/api', homeRouter)
-// Implement route for '/users' endpoint
-// ! Note:
-// '/users' will prefix all post routes
-// with '/users' => '/all' will become '/users/all'
+
+
 // Implement route for errors
 app.use((err, req, res, next) => {
    console.error(err.stack)
