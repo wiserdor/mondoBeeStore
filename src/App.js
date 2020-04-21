@@ -18,9 +18,8 @@ function App() {
     }
 
     return (
-      <Route exact path="/admin/main">
+      
         <AdminMain token={token} />
-      </Route>
     );
   };
   return (
@@ -29,7 +28,9 @@ function App() {
         <Route exact path="/">
           <Main />
         </Route>
-        {getProtectedRoute()}
+        <Route exact path="/admin/main">
+            {getProtectedRoute()}
+        </Route>
         <Route exact path="/admin/login">
           <AdminLogin token={token} setToken={setToken} />
         </Route>
