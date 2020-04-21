@@ -32,6 +32,9 @@ if (process.env.NODE_ENV && process.env.NODE_ENV !== 'development') {
 
     app.get('/', (req, res) => {
       res.sendFile('build/index.html', { root: __dirname })
+    })
+    app.get('/admin', (req, res) => {
+    res.sendFile('build/index.html', { root: __dirname+"../mondobee-admin/" })
   })
 }
 // Implement route for '/api' endpoint
