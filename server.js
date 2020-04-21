@@ -29,6 +29,8 @@ app.use(bodyParser.json())
 console.log(process.env.DB_URL)
 if (process.env.NODE_ENV && process.env.NODE_ENV !== 'development') {
     app.use(express.static(__dirname + '/build'))
+    app.use(express.static(__dirname + '../mondobee-admin/build'))
+
 
     app.get('/', (req, res) => {
       res.sendFile('build/index.html', { root: __dirname })
