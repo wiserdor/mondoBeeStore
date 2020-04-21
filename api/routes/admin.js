@@ -36,5 +36,6 @@ function fileUpload(req, res, next) {
 }
 
 router.post("/upload", fileUpload, adminControllers.upload);
+router.post("/auth", adminControllers.auth);
 
 module.exports = router;

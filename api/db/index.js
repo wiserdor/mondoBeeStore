@@ -25,6 +25,36 @@ exports.addOrder = async (order) => {
   }
 };
 
+exports.getOrders = async () => {
+    try {
+      const res = await pool.query("SELECT * FROM orders");
+      return res;
+    } catch (err) {
+      console.log(err.stack);
+    }
+  };
+
+exports.addAuthToken = async (token) => {
+    try {
+      const res = await pool.query(
+        "INSERT INTO auth_token(token, date) VALUES($1,$2) RETURNING id",
+        [token, new Date()]
+      );
+      console.log(res);
+    } catch (err) {
+      throw err.stack;
+    }
+  };
+
+  exports.getToken = async (token) => {
+    try {
+      const res = await pool.query("SELECT token FROM auth_token where token="+token);
+      return res;
+    } catch (err) {
+      throw err.stack;
+    }
+  };
+
 exports.addToCatalog = async (items) => {
   try {
     items.forEach((item) => {
@@ -43,6 +73,6 @@ exports.addToCatalog = async (items) => {
     });
   } catch (err) {
     console.log(err);
-    throw err;
+    throw err.stack;
   }
 };

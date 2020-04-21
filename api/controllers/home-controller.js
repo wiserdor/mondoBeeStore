@@ -1,4 +1,4 @@
-const { getCatalog, addToCatalog, addOrder } = require("../db");
+const { getCatalog, addToCatalog, addOrder, getToken, getOrders } = require("../db");
 
 const mailjet = require("node-mailjet").connect(
   process.env.MAILJET_API,
@@ -15,9 +15,9 @@ exports.send = async (req, res) => {
 
   // Send as mail
   let to_mails;
-  const mail_arr=[];
+  const mail_arr = [];
   if (process.env.TO_EMAILS) to_mails = process.env.TO_EMAILS.split(" ");
-  to_mails.forEach(m=>mail_arr.push({Email:m}))
+  to_mails.forEach((m) => mail_arr.push({ Email: m }));
   const request = mailjet.post("send", { version: "v3.1" }).request({
     Messages: [
       {
@@ -25,7 +25,7 @@ exports.send = async (req, res) => {
           Email: "vgibsonsg@gmail.com",
           Name: "Mondo",
         },
-        To:mail_arr,
+        To: mail_arr,
         Subject: "הזמנה חדשה בחנות של מונדו",
         HTMLPart:
           `<body dir="rtl"><h1>הזמנה מ${j.details.name}</h1>` +
@@ -80,11 +80,21 @@ exports.catalog = async (req, res) => {
   }
 };
 
-// exports.addToCatalog = async (req, res) => {
-//     try{
-//       const cat = await addToCatalog(req.body);
-//       res.status(200).send("ok");
-//     } catch (err){
-//       res.status(500).send(req.body)
-//     }
-//   };
+exports.addToCatalog = async (req, res) => {
+  try {
+    const cat = await addToCatalog(req.body);
+    res.status(200).send("ok");
+  } catch (err) {
+    res.status(500).send();
+  }
+};
+
+exports.orders = async (req, res) => {
+    try {
+      const orders = await getOrders();
+      res.status(200).send(orders.rows);
+    } catch (err) {
+        console.log(err.stack)
+      res.status(500).send();
+    }
+  };
