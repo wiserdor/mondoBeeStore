@@ -7,10 +7,10 @@ const NotFound = (params) => {
     <>
       <Paper
         variant="outlined"
-        style={{ textAlign: "center", marginTop: "50vh" }}
+        style={{ textAlign: "center", marginTop: "20vh" }}
       >
-        <Typography variant="h2">נכנסתם לדף הלא נכון...</Typography>
-        <Typography variant="h2">
+        <Typography variant="h4">הדף אינו קיים...</Typography>
+        <Typography variant="h4">
           <Link href="/">לחצו כאן לחזרה לדף הראשי</Link>
         </Typography>
       </Paper>
