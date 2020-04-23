@@ -8,16 +8,18 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import Axios from "axios";
 
-const EditItem = ({ item, token, title }) => {
+const EditItem = ({ item, token, title, refresh }) => {
   const [open, setOpen] = useState(false);
 
   const [name, setName] = useState(item.name);
   const [price, setPrice] = useState(item.price);
   const [unitName, setUnitName] = useState(item.unit_name);
-  const [countStep, setCountStep] = useState(item.count_step);
-  const [estimation, setEstimation] = useState(item.estimate_quantity_per_unit);
+  const [countStep, setCountStep] = useState(item.count_step || 1);
+  const [estimation, setEstimation] = useState(
+    item.estimate_quantity_per_unit || 1
+  );
   const [description, setDescription] = useState(item.description);
-  const [unitCount, setUnitCount] = useState(item.unit_count);
+  const [unitCount, setUnitCount] = useState(item.unit_count || 1);
   const [imgPath, setImagePath] = useState(item.img_path);
   const [discountTotal, setDiscountTotal] = useState(item.discount_total);
   const [discountPerUnit, setDiscountPerUnit] = useState(
@@ -39,11 +41,12 @@ const EditItem = ({ item, token, title }) => {
     };
     if (item.id) payload.id = item.id;
     const url = item.id ? "/api/catalog/edit" : "/api/catalog/add";
-    Axios.post(url, payload, {
+    await Axios.post(url, payload, {
       headers: {
         Authorization: `Basic ${token}`,
       },
     });
+    refresh();
     setOpen(false);
   };
 
@@ -157,7 +160,7 @@ const EditItem = ({ item, token, title }) => {
             }}
             color="primary"
           >
-            {item.id?"ערוך":"הוסף"}
+            {item.id ? "ערוך" : "הוסף"}
           </Button>
         </DialogActions>
       </Dialog>

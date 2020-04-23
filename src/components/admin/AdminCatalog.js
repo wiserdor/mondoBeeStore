@@ -43,34 +43,39 @@ const AdminCatalog = ({ token }) => {
   return (
     <>
       <Container>
-      <EditItem item={{}} title="הוסף פריט" token={token} />
-      <Divider style={{marginTop:20}} />
-      {catalog.map((i) => (
-        <div>
-          <ExpansionPanel>
-            <ExpansionPanelSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
-              <Typography>{i.name + " "}</Typography>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <EditItem title="ערוך" item={i} token={token} />
-              <Button
-                onClick={()=>deleteItem(i)}
-                style={{
-                  marginRight: 50,
-                  color: "white",
-                  backgroundColor: "red",
-                }}
+        <EditItem item={{}} refresh={refresh} title="הוסף פריט" token={token} />
+        <Divider style={{ marginTop: 20 }} />
+        {catalog.map((i) => (
+          <div>
+            <ExpansionPanel>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
               >
-                מחק
-              </Button>
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
-        </div>
-      ))}
+                <Typography>{i.name + " "}</Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <EditItem
+                  title="ערוך"
+                  item={i}
+                  refresh={refresh}
+                  token={token}
+                />
+                <Button
+                  onClick={() => {if (window.confirm('האם אתה בטוח שאתה רוצה למחוק את הפריט?'))deleteItem(i)}}
+                  style={{
+                    marginRight: 50,
+                    color: "white",
+                    backgroundColor: "red",
+                  }}
+                >
+                  מחק
+                </Button>
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+          </div>
+        ))}
       </Container>
     </>
   );
