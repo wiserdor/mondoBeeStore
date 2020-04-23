@@ -1,6 +1,6 @@
 const multer = require("multer");
 const crypto = require("crypto")
-const { getCatalog, addToCatalog, addOrder, getToken, addAuthToken } = require("../db");
+const { addAuthToken } = require("../db");
 
 
 

@@ -1,9 +1,4 @@
-const { getCatalog, addToCatalog, addOrder, getToken, getOrders } = require("../db");
-
-const mailjet = require("node-mailjet").connect(
-  process.env.MAILJET_API,
-  process.env.MAILJET_SECRET
-);
+const { getCatalog, addToCatalog } = require("../db");
 
 exports.catalog = async (req, res) => {
   try {
@@ -22,5 +17,3 @@ exports.addToCatalog = async (req, res) => {
     res.status(500).send();
   }
 };
-
-
