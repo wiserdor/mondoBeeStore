@@ -24,6 +24,7 @@ const destA = multer({ storage: storageA });
 const destB = multer({ storage: storageB });
 
 exports.fileUpload = (req, res, next) => {
+    console.log("Uploading file")
   destA.single("file")(req, res, next);
   destB.single("file")(req, res, next);
   next();
