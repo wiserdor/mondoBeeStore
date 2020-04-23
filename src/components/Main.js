@@ -35,13 +35,12 @@ const Main = () => {
             <Typography
               variant="h6"
               component="p"
-              style={{ color: "#7a7a7a", marginTop: 10 }}
+              style={{  marginTop: 10 }}
             >
               <LocalShippingIcon
                 style={{
                   top: 6,
                   position: "relative",
-                  color: "black",
                   marginLeft: 5,
                 }}
               />
@@ -50,17 +49,17 @@ const Main = () => {
             <Typography
               variant="h6"
               component="h4"
-              style={{ marginBottom: 20, color: "#7a7a7a" }}
+              style={{ marginBottom: 20 }}
             >
               משלוחים עבור ישובים מרוחקים יינתנו עבור הזמנות מרוכזות.
             </Typography>
             <Typography
               variant="h6"
               component="p"
-              style={{ color: "#7a7a7a", marginTop: 20 }}
+              style={{  marginTop: 20 }}
             >
               <PaymentIcon
-                style={{ top: 6, position: "relative", color: "black" }}
+                style={{ top: 6, position: "relative"}}
               />
               התשלום במזומן או ביט לטלפון 054-3300801
             </Typography>
