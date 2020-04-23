@@ -6,6 +6,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import Divider from "@material-ui/core/Divider";
 import { StoreProvider } from "../context/StoreContext";
+import PaymentIcon from "@material-ui/icons/Payment";
+import LocalShippingIcon from "@material-ui/icons/LocalShipping";
 
 import Catalog from "./Catalog";
 import logo from "../resources/logo.jpeg";
@@ -23,19 +25,44 @@ const Main = () => {
         >
           <img src={logo} className="logo-background" />
           <Grid item xs={12}>
-            <Typography variant="h5" component="h5" style={{ marginTop: 20,fontSize: "1.7rem" }}>
+            <Typography
+              variant="h5"
+              component="p"
+              style={{ marginTop: 20, fontSize: "1.7rem" }}
+            >
               מבחר רב של פירות העונה המתעדכנים באופן יום יומי בהתאם לסחורה בשוק.
             </Typography>
-            <Typography variant="h6" component="h4" style={{ color: "red" }}>
+            <Typography
+              variant="h6"
+              component="p"
+              style={{ color: "red", marginTop: 10 }}
+            >
+              <LocalShippingIcon
+                style={{
+                  top: 6,
+                  position: "relative",
+                  color: "black",
+                  marginLeft: 5,
+                }}
+              />
               משלוחים לישובי לב השרון, תל מונד,קדימה-צורן ואבן יהודה בלבד,
             </Typography>
-
             <Typography
               variant="h6"
               component="h4"
               style={{ marginBottom: 20, color: "red" }}
             >
               משלוחים עבור ישובים מרוחקים יינתנו עבור הזמנות מרוכזות.
+            </Typography>
+            <Typography
+              variant="h6"
+              component="p"
+              style={{ color: "red", marginTop: 20 }}
+            >
+              <PaymentIcon
+                style={{ top: 6, position: "relative", color: "black" }}
+              />
+              התשלום במזומן או ביט לטלפון 054-3300801
             </Typography>
           </Grid>
           <Divider style={{ marginBottom: 40 }} />
