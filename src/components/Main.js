@@ -23,8 +23,8 @@ const Main = () => {
         >
           <img src={logo} className="logo-background" />
           <Grid item xs={12}>
-            <Typography variant="h4" component="h4" style={{ marginTop: 20 }}>
-              מבחר רב של פירות העונה המתעדכנים באופן יום יומי בהתאם לסחורה בשוק
+            <Typography variant="h5" component="h5" style={{ marginTop: 20,fontSize: "1.7rem" }}>
+              מבחר רב של פירות העונה המתעדכנים באופן יום יומי בהתאם לסחורה בשוק.
             </Typography>
             <Typography variant="h6" component="h4" style={{ color: "red" }}>
               משלוחים לישובי לב השרון, תל מונד,קדימה-צורן ואבן יהודה בלבד,
