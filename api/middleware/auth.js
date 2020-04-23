@@ -1,12 +1,12 @@
 const { getToken } = require("../db");
 
-exports.verifyToken = (req, res, next) => {
+exports.verifyToken = async (req, res, next) => {
   console.log("Verifying token");
   const bearerHeader = req.headers["authorization"];
   if (bearerHeader) {
     const bearer = bearerHeader.split(" ");
     const bearerToken = bearer[1];
-    const isAuth = getToken(bearerToken);
+    const isAuth = await getToken(bearerToken);
     console.log(isAuth);
     if (isAuth) {
       req.token = bearerToken;
