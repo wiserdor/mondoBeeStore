@@ -3,6 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { Paper } from "@material-ui/core";
 import { Redirect } from "react-router-dom";
+import Container from "@material-ui/core/Container";
 
 import { AuthContext } from "../../context/AuthContext";
 import Axios from "axios";
@@ -32,6 +33,8 @@ const AdminLogin = ({ token, setToken }) => {
     );
   if (!token)
     return (
+        <Container>
+
       <Paper style={{ textAlign: "center" }}>
         <form noValidate autoComplete="off" onSubmit={(e) => handleSubmit(e)}>
           <div>
@@ -50,6 +53,7 @@ const AdminLogin = ({ token, setToken }) => {
           </div>
         </form>
       </Paper>
+      </Container>
     );
 };
 

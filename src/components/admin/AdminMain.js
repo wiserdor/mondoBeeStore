@@ -6,6 +6,8 @@ import { Redirect } from "react-router-dom";
 import { Paper } from "@material-ui/core";
 import OrdersPage from "./OrdersPage";
 import AdminCatalog from "./AdminCatalog"
+import Container from "@material-ui/core/Container";
+
 
 const AdminMain = ({ token }) => {
   const [file, setFile] = useState("");
@@ -20,7 +22,7 @@ const AdminMain = ({ token }) => {
       });
   };
   return (
-    <div>
+    <Container>
       {token ? (
         <>
           <Tabs>
@@ -35,7 +37,7 @@ const AdminMain = ({ token }) => {
               </Paper>
             </TabPanel>
             <TabPanel>
-            <AdminCatalog />
+            <AdminCatalog token={token} />
             </TabPanel>
             <TabPanel>
               <Paper style={{ textAlign: "center" }}>
@@ -56,7 +58,7 @@ const AdminMain = ({ token }) => {
           }}
         />
       )}
-    </div>
+      </Container>
   );
 };
 

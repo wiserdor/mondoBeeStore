@@ -1,4 +1,4 @@
-const { getCatalog, addToCatalog } = require("../db");
+const { getCatalog, addToCatalog, editItemFromCatalog, deleteItemFromCatalog } = require("../db");
 
 exports.catalog = async (req, res) => {
   try {
@@ -17,3 +17,21 @@ exports.addToCatalog = async (req, res) => {
     res.status(500).send();
   }
 };
+
+exports.editItem = async (req, res) => {
+    try {
+      const cat = await editItemFromCatalog(req.body);
+      res.status(200).send("ok");
+    } catch (err) {
+      res.status(500).send();
+    }
+  };
+
+  exports.deleteItem = async (req, res) => {
+    try {
+      const cat = await deleteItemFromCatalog(req.body);
+      res.status(200).send("ok");
+    } catch (err) {
+      res.status(500).send();
+    }
+  };

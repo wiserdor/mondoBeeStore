@@ -59,22 +59,56 @@ exports.getToken = async (token) => {
   }
 };
 
-exports.addToCatalog = async (items) => {
+exports.addToCatalog = async (item) => {
   try {
-    items.forEach((item) => {
-      pool.query(
-        "INSERT INTO catalog(name, price, count_step, unit_name, img_path, description,unit_count) VALUES($1,$2,$3,$4,$5,$6,$7)",
-        [
-          item.name,
-          item.price,
-          item.count_step,
-          item.unit_name,
-          item.img_path,
-          item.description,
-          item.unit_count,
-        ]
-      );
-    });
+    pool.query(
+      "INSERT INTO catalog(name, price, count_step, unit_name, img_path, description,unit_count,discount_total,discount_per_unit) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)",
+      [
+        item.name,
+        item.price,
+        item.count_step,
+        item.unit_name,
+        item.img_path,
+        item.description,
+        item.unit_count,
+        item.discount_total,
+        item.discount_per_unit
+      ]
+    );
+  } catch (err) {
+    console.log(err);
+    throw err.stack;
+  }
+};
+
+exports.editItemFromCatalog = async (item) => {
+  try {
+    pool.query(
+      `UPDATE catalog 
+        SET name='${item.name}', price=${item.price}, count_step=${
+        item.count_step
+      }, 
+        img_path='${item.img_path || ""}',
+        description='${item.description || ""}',
+        unit_name='${item.unit_name || ""}'
+        ${item.unit_count ? ",unit_count=" + item.unit_count : ""}
+        ${item.discount_total ? ",discount_total=" + item.discount_total : ""}
+        ${
+          item.discount_per_unit
+            ? ",discount_per_unit=" + item.discount_per_unit
+            : ""
+        } where id=${item.id}`
+    );
+  } catch (err) {
+    console.log(err);
+    throw err.stack;
+  }
+};
+
+exports.deleteItemFromCatalog = async (item) => {
+  try {
+      console.log(item)
+    pool.query("DELETE FROM catalog WHERE id = $1", [item.id]);
   } catch (err) {
     console.log(err);
     throw err.stack;
