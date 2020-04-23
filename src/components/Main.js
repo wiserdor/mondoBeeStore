@@ -35,7 +35,7 @@ const Main = () => {
             <Typography
               variant="h6"
               component="p"
-              style={{ color: "red", marginTop: 10 }}
+              style={{ color: "#7a7a7a", marginTop: 10 }}
             >
               <LocalShippingIcon
                 style={{
@@ -50,14 +50,14 @@ const Main = () => {
             <Typography
               variant="h6"
               component="h4"
-              style={{ marginBottom: 20, color: "red" }}
+              style={{ marginBottom: 20, color: "#7a7a7a" }}
             >
               משלוחים עבור ישובים מרוחקים יינתנו עבור הזמנות מרוכזות.
             </Typography>
             <Typography
               variant="h6"
               component="p"
-              style={{ color: "red", marginTop: 20 }}
+              style={{ color: "#7a7a7a", marginTop: 20 }}
             >
               <PaymentIcon
                 style={{ top: 6, position: "relative", color: "black" }}
