@@ -42,6 +42,7 @@ exports.addAuthToken = async (token) => {
     );
     console.log(res);
   } catch (err) {
+    console.log(new Date());
     throw err.stack;
   }
 };
