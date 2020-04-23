@@ -14,7 +14,7 @@ exports.auth = async (req, res) => {
      */
     const payload = req.body
     if(payload.password === process.env.ADMIN_PASSWORD){
-        const token = crypto.randomBytes(64).toString('hex');
+        const token = crypto.randomBytes(22).toString('hex');
         addAuthToken(token);
         res.status(200).send({token:token})
     }
