@@ -51,10 +51,9 @@ exports.getToken = async (token) => {
   try {
     console.log(token);
     const res = await pool.query(
-      "SELECT token FROM auth_token where token=" + token
+      "SELECT token FROM auth_token where token='" + token + "'"
     );
-    console.log(res);
-    return res.rows;
+    return res;
   } catch (err) {
     throw err.stack;
   }
