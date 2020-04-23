@@ -49,10 +49,11 @@ exports.addAuthToken = async (token) => {
 
 exports.getToken = async (token) => {
   try {
+    console.log(token);
     const res = await pool.query(
       "SELECT token FROM auth_token where token=" + token
     );
-    console.log(res)
+    console.log(res);
     return res.rows;
   } catch (err) {
     throw err.stack;
