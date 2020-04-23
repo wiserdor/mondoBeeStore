@@ -8,7 +8,7 @@ exports.verifyToken = async (req, res, next) => {
     const bearerToken = bearer[1];
     const isAuth = await getToken(bearerToken);
     console.log(isAuth);
-    if (isAuth.rows) {
+    if (isAuth.rowCount) {
       req.token = bearerToken;
       next();
     } else res.sendStatus(403);

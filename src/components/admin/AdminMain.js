@@ -14,8 +14,10 @@ const AdminMain = ({ token }) => {
     const data = new FormData();
     data.append("file", file);
     axios.post("/api/admin/upload", data, {
-      // receive two    parameter endpoint url ,form data
-    });
+        headers: {
+          Authorization: `Basic ${token}`,
+        },
+      });
   };
   return (
     <div>
