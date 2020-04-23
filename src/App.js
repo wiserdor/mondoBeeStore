@@ -5,6 +5,8 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
+import { createMuiTheme } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/styles";
 
 import Main from "./components/Main";
 import AdminMain from "./components/admin/AdminMain";
@@ -14,6 +16,19 @@ import NotFound from "./components/NotFound";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import "typeface-roboto";
+
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: [
+      "Arimo",
+      "Nunito",
+      "Roboto",
+      '"Helvetica Neue"',
+      "Arial",
+      "sans-serif",
+    ].join(","),
+  },
+});
 
 function App() {
   const [token, setToken] = useState(null);
@@ -27,23 +42,25 @@ function App() {
   };
   return (
     <div className="App">
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <Main />
-          </Route>
+      <ThemeProvider theme={theme}>
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <Main />
+            </Route>
 
-          <Route exact path="/admin/main">
-            {getProtectedRoute()}
-          </Route>
-          <Route exact path="/admin/login">
-            <AdminLogin token={token} setToken={setToken} />
-          </Route>
-          <Route path="*">
-            <NotFound />
-          </Route>
-        </Switch>
-      </Router>
+            <Route exact path="/admin/main">
+              {getProtectedRoute()}
+            </Route>
+            <Route exact path="/admin/login">
+              <AdminLogin token={token} setToken={setToken} />
+            </Route>
+            <Route path="*">
+              <NotFound />
+            </Route>
+          </Switch>
+        </Router>
+      </ThemeProvider>
     </div>
   );
 }

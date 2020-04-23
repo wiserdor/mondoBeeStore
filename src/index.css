@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "Arimo";
+  src: url("./resources/Fonts/Arimo-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: Arimo !important;
+  font-size: 15x;
+  line-height: 18px;
+  font-weight: normal;
+}
