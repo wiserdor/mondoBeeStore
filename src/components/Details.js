@@ -62,7 +62,7 @@ export default function Details({ cart }) {
         action: "Sending cart to email",
       });
       try {
-        let a = await Axios.post("/api/send", {
+        let a = await Axios.post("/api/orders/send", {
           cart: cart,
           details: { name, phone, address, city, notes },
         });
