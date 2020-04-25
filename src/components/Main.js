@@ -10,7 +10,7 @@ import PaymentIcon from "@material-ui/icons/Payment";
 import LocalShippingIcon from "@material-ui/icons/LocalShipping";
 
 import Catalog from "./Catalog";
-import logo from "../resources/logo.jpeg";
+import logo from "../resources/logo.PNG";
 import "typeface-roboto";
 
 const Main = () => {
