@@ -8,3 +8,11 @@ body{
     color:#2d2828;
     margin: 0;
 }
+
+.MuiCardMedia-root {
+    image-orientation: from-image;
+}
+
+img {
+    image-orientation: from-image;
+}

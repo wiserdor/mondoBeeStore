@@ -61,7 +61,7 @@ const Main = () => {
               <PaymentIcon
                 style={{ top: 6, position: "relative"}}
               />
-              התשלום במזומן או ביט לטלפון 054-3300801
+              התשלום במזומן או ביט לטלפון <span style={{whiteSpace:"nowrap"}}>054-3300801</span>
             </Typography>
           </Grid>
           <Divider style={{ marginBottom: 40 }} />
