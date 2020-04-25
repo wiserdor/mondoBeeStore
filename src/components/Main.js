@@ -17,13 +17,14 @@ const Main = () => {
   return (
     <>
       <StoreProvider>
+        <img src={logo} className="logo-background" />
+
         <Container
           id="mainContainer"
           maxWidth="md"
           align="center"
           style={{ textAlign: "center", paddingBottom: 70 }}
         >
-          <img src={logo} className="logo-background" />
           <Grid item xs={12}>
             <Typography
               variant="h5"
@@ -32,11 +33,7 @@ const Main = () => {
             >
               מבחר רב של פירות העונה המתעדכנים באופן יום יומי בהתאם לסחורה בשוק.
             </Typography>
-            <Typography
-              variant="h6"
-              component="p"
-              style={{  marginTop: 10 }}
-            >
+            <Typography variant="h6" component="p" style={{ marginTop: 10 }}>
               <LocalShippingIcon
                 style={{
                   top: 6,
@@ -53,15 +50,10 @@ const Main = () => {
             >
               משלוחים עבור ישובים מרוחקים יינתנו עבור הזמנות מרוכזות.
             </Typography>
-            <Typography
-              variant="h6"
-              component="p"
-              style={{  marginTop: 20 }}
-            >
-              <PaymentIcon
-                style={{ top: 6, position: "relative"}}
-              />
-              התשלום במזומן או ביט לטלפון <span style={{whiteSpace:"nowrap"}}>054-3300801</span>
+            <Typography variant="h6" component="p" style={{ marginTop: 20 }}>
+              <PaymentIcon style={{ top: 6, position: "relative" }} />
+              התשלום במזומן או ביט לטלפון{" "}
+              <span style={{ whiteSpace: "nowrap" }}>054-3300801</span>
             </Typography>
           </Grid>
           <Divider style={{ marginBottom: 40 }} />
