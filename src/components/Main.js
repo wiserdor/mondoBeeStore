@@ -8,10 +8,11 @@ import Divider from "@material-ui/core/Divider";
 import { StoreProvider } from "../context/StoreContext";
 import PaymentIcon from "@material-ui/icons/Payment";
 import LocalShippingIcon from "@material-ui/icons/LocalShipping";
-
+import AlarmOnIcon from "@material-ui/icons/AlarmOn";
 import Catalog from "./Catalog";
 import logo from "../resources/logo.PNG";
 import "typeface-roboto";
+import "./Main.css";
 
 const Main = () => {
   return (
@@ -29,33 +30,47 @@ const Main = () => {
             <Typography
               variant="h5"
               component="p"
-              style={{ marginTop: 20, fontSize: "1.7rem" }}
-            >
-              מבחר רב של פירות העונה המתעדכנים באופן יום יומי בהתאם לסחורה בשוק.
-            </Typography>
-            <Typography variant="h6" component="p" style={{ marginTop: 10 }}>
-              <LocalShippingIcon
-                style={{
-                  top: 6,
-                  position: "relative",
-                  marginLeft: 5,
-                }}
-              />
-              משלוחים לישובי לב השרון, תל מונד,קדימה-צורן ואבן יהודה בלבד,
-            </Typography>
-            <Typography
-              variant="h6"
-              component="h4"
-              style={{ marginBottom: 20 }}
-            >
-              משלוחים עבור ישובים מרוחקים יינתנו עבור הזמנות מרוכזות.
-            </Typography>
-            <Typography variant="h6" component="p" style={{ marginTop: 20 }}>
-              <PaymentIcon style={{ top: 6, position: "relative" }} />
-              התשלום במזומן או ביט לטלפון{" "}
-              <span style={{ whiteSpace: "nowrap" }}>054-3300801</span>
-            </Typography>
+              style={{
+                marginTop: 10,
+                fontSize: "1.7rem",
+                color: "forestgreen",
+                fontWeight: 600,
+              }}
+            ></Typography>
           </Grid>
+          <div className="grid-container" style={{marginBottom:20}}>
+            <div className="details-header-grid-item">
+              <AlarmOnIcon style={{color:"forestgreen"}} />
+              <Typography variant="h6" component="p" style={{ marginTop: 10 }}>
+                מבחר רב של פירות וירקות העונה המתעדכנים באופן יום יומי בהתאם
+                לסחורה בשוק והמשלוח חינם מהיום להיום.
+              </Typography>
+            </div>
+            <div className="details-header-grid-item">
+              <LocalShippingIcon style={{color:"forestgreen"}} />
+              <Typography
+                variant="h6"
+                component="p"
+                style={{ marginTop: 10 }}
+              ></Typography>
+              <Typography
+                variant="h6"
+                component="p"
+                style={{ marginBottom: 20 }}
+              >
+                משלוחים לישובי לב השרון, תל מונד,קדימה-צורן ואבן יהודה
+                בלבד, משלוחים עבור ישובים מרוחקים יינתנו עבור הזמנות מרוכזות.
+              </Typography>
+            </div>
+            <div className="details-header-grid-item">
+              <PaymentIcon style={{color:"forestgreen"}}/>
+
+              <Typography variant="h6" component="p" style={{ marginTop: 10 }}>
+                התשלום במזומן או ביט לטלפון{" "}
+                <span style={{ whiteSpace: "nowrap" }}>054-3300801</span>
+              </Typography>
+            </div>
+          </div>
           <Divider style={{ marginBottom: 40 }} />
           <Catalog />
           <ToastContainer
