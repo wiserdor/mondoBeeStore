@@ -3,7 +3,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-column-gap: 20px;
-    grid-row-gap: 5px;
+    grid-row-gap: 15px;
     justify-items: stretch;
     align-items: stretch;
   }
@@ -15,16 +15,15 @@
 
 .details-header-grid-item {
   border-width: 2px;
-  background-color: khaki;
-  font-weight: 600;
+  font-weight: 500;
   border-color: forestgreen;
   border-style: solid;
-  border-radius: 8px;
-  padding: 10px; 
+  border-radius: 18px;
+  padding: 5px; 
 }
 
 .details-header-grid-item p{
-    font-weight: 500;
+    font-weight: 600;
 }
 
 
