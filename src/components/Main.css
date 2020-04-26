@@ -3,7 +3,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-column-gap: 20px;
-    grid-row-gap: 20px;
+    grid-row-gap: 5px;
     justify-items: stretch;
     align-items: stretch;
   }
@@ -21,7 +21,6 @@
   border-style: solid;
   border-radius: 8px;
   padding: 10px; 
-  margin-top: 20px;
 }
 
 .details-header-grid-item p{
@@ -34,7 +33,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 20px;
-    grid-row-gap: 20px;
+    grid-row-gap: 5px;
     justify-items: stretch;
     align-items: stretch;
   }
