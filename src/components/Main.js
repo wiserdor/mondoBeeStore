@@ -24,30 +24,39 @@ const Main = () => {
           id="mainContainer"
           maxWidth="md"
           align="center"
-          style={{ textAlign: "center", paddingBottom: 70 }}
+          style={{ textAlign: "center", paddingTop: 40 }}
         >
+          <Divider style={{ marginBottom: 20 }} />
           <Grid item xs={12}>
             <Typography
-              variant="h5"
+              variant="h6"
               component="p"
               style={{
-                marginTop: 10,
-                fontSize: "1.7rem",
-                color: "forestgreen",
+                padding: 10,
                 fontWeight: 600,
+                marginBottom: 10,
               }}
-            ></Typography>
+            >
+              קוראים לי מונדו (גם בעברית) אני חקלאי קטן ממושב חרות. קצת אבוקדו,
+              קצת אנונה, פרי הדר לסוגיו, כוורן כ-50 שנה. "דבש טבעי - לטעום
+              ולהלל". מוכר את תוצרתי ושל חקלאים ישראלים נוספים, ביריד דוכנים
+              המתקיים בימי שישי בקניון דרורים. עד שהגיעה הקורונה. בהסתגלות
+              ל"מצב" אני ומשפחתי הסבנו את פעילותנו ואנו מקיימים משלוחים לבתי
+              לקוחותנו. נשמח לעמוד לרשותכם.
+            </Typography>
           </Grid>
-          <div className="grid-container" style={{marginBottom:20}}>
+          <Divider style={{ marginBottom: 40 }} />
+
+          <div className="grid-container" style={{ marginBottom: 20 }}>
             <div className="details-header-grid-item">
-              <AlarmOnIcon style={{color:"forestgreen"}} />
+              <AlarmOnIcon style={{ color: "forestgreen" }} />
               <Typography variant="h6" component="p" style={{ marginTop: 10 }}>
                 מבחר רב של פירות וירקות העונה המתעדכנים באופן יום יומי בהתאם
                 לסחורה בשוק והמשלוח חינם מהיום להיום.
               </Typography>
             </div>
             <div className="details-header-grid-item">
-              <LocalShippingIcon style={{color:"forestgreen"}} />
+              <LocalShippingIcon style={{ color: "forestgreen" }} />
               <Typography
                 variant="h6"
                 component="p"
@@ -58,12 +67,12 @@ const Main = () => {
                 component="p"
                 style={{ marginBottom: 20 }}
               >
-                משלוחים לישובי לב השרון, תל מונד,קדימה-צורן ואבן יהודה
-                בלבד, משלוחים עבור ישובים מרוחקים יינתנו עבור הזמנות מרוכזות.
+                משלוחים לישובי לב השרון, תל מונד,קדימה-צורן ואבן יהודה בלבד,
+                משלוחים עבור ישובים מרוחקים יינתנו עבור הזמנות מרוכזות.
               </Typography>
             </div>
             <div className="details-header-grid-item">
-              <PaymentIcon style={{color:"forestgreen"}}/>
+              <PaymentIcon style={{ color: "forestgreen" }} />
 
               <Typography variant="h6" component="p" style={{ marginTop: 10 }}>
                 התשלום במזומן או ביט לטלפון{" "}

@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import ReactGA from 'react-ga';
+import ReactGA from "react-ga";
 import ItemCard from "./ItemCard";
 import Cart from "./Cart";
 import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 
 import { StoreContext } from "../context/StoreContext";
 
@@ -11,9 +12,9 @@ const Catalog = () => {
 
   useEffect(() => {
     ReactGA.event({
-        category: userForAnalytic,
-        action: 'Catalog loaded'
-      });
+      category: userForAnalytic,
+      action: "Catalog loaded",
+    });
     window.scrollTo(0, 0);
   }, []);
 
