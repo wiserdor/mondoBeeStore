@@ -17,7 +17,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import Button from "@material-ui/core/Button";
 import DialogContentText from "@material-ui/core/DialogContentText";
-import ReactGA from 'react-ga';
+import ReactGA from "react-ga";
 import { ToastContainer, toast } from "react-toastify";
 import { StoreContext } from "../context/StoreContext";
 import Badge from "@material-ui/core/Badge";
@@ -34,7 +34,13 @@ const floatStyle = {
 
 const Cart = () => {
   const [open, setOpen] = useState(false);
-  const { cart, dispatchCart, catalog, userForAnalytic } = useContext(StoreContext);
+  const {
+    cart,
+    dispatchCart,
+    catalog,
+    userForAnalytic,
+    maintenanceMode,
+  } = useContext(StoreContext);
 
   const deleteFromCart = (item) => {
     catalog.find((i) => i.id === item.id).count = 0;
@@ -77,21 +83,21 @@ const Cart = () => {
     }
   };
 
-  const getTotalCost = ()=>{
+  const getTotalCost = () => {
     return cart
-    .map((a) =>
-      a.price && a.count
-        ? a.price * a.count * a.estimate_quantity_per_unit
-        : 0
-    )
-    .reduce((a, b) => a + b,0)
-  }
+      .map((a) =>
+        a.price && a.count
+          ? a.price * a.count * a.estimate_quantity_per_unit
+          : 0
+      )
+      .reduce((a, b) => a + b, 0);
+  };
 
   const handleClickOpen = () => {
     ReactGA.event({
-        category: userForAnalytic,
-        action: 'Opened cart'
-      });
+      category: userForAnalytic,
+      action: "Opened cart",
+    });
     if (cart.length !== 0) setOpen(true);
   };
 
@@ -103,9 +109,7 @@ const Cart = () => {
     if (cart.length === 0) handleClose();
   }, [cart]);
 
-  useEffect(()=>{
-
-  },[])
+  useEffect(() => {}, []);
 
   const notify = () =>
     toast.error("הפריט הוסר מהעגלה", {
@@ -119,19 +123,23 @@ const Cart = () => {
 
   return (
     <>
-      <Chip
-        label={'₪'+getTotalCost()}
-        variant="outlined"
-        style={{
-          margin: 0,
-          top: "auto",
-          right: 75,
-          bottom: 30,
-          left: "auto",
-          backgroundColor:"white",
-          position: "fixed",
-        }}
-      />
+      {maintenanceMode ? (
+        ""
+      ) : (
+        <Chip
+          label={"₪" + getTotalCost()}
+          variant="outlined"
+          style={{
+            margin: 0,
+            top: "auto",
+            right: 75,
+            bottom: 30,
+            left: "auto",
+            backgroundColor: "white",
+            position: "fixed",
+          }}
+        />
+      )}
       <Fab
         style={floatStyle}
         onClick={handleClickOpen}
@@ -163,7 +171,9 @@ const Cart = () => {
                     "כמות:" +
                     i.count +
                     " | " +
-                    i.count * i.unit_count * i.estimate_quantity_per_unit +
+                    (!maintenanceMode
+                      ? i.count * i.unit_count * i.estimate_quantity_per_unit
+                      : "") +
                     " " +
                     i.unit_name
                   }
@@ -185,7 +195,9 @@ const Cart = () => {
                   </IconButton>
                 </ListItemSecondaryAction>
                 <ListItemAvatar style={{ marginRight: "3vh" }}>
-                  {"₪" + i.price * i.count * i.estimate_quantity_per_unit}
+                  {!maintenanceMode
+                    ? "₪" + i.price * i.count * i.estimate_quantity_per_unit
+                    : null}
                   <IconButton
                     style={{ marginRight: 10 }}
                     edge="end"
@@ -205,17 +217,25 @@ const Cart = () => {
         <DialogContent dividers={true} style={{ minHeight: "100px" }}>
           {cart.length ? (
             <div style={{ marginTop: 5, marginBottom: 5 }}>
-              <small>*ייתכנו שינויים קלים במחיר בהתאם למשקל</small>
-              <Typography>
-                סה"כ: ₪
-                {cart
-                  .map((a) =>
-                    a.price && a.count
-                      ? a.price * a.count * a.estimate_quantity_per_unit
-                      : 0
-                  )
-                  .reduce((a, b) => a + b)}
-              </Typography>
+              {!maintenanceMode ? (
+                <>
+                  <small>*ייתכנו שינויים קלים במחיר בהתאם למשקל</small>
+
+                  <Typography>
+                    סה"כ: ₪
+                    {cart
+                      .map((a) =>
+                        a.price && a.count
+                          ? a.price * a.count * a.estimate_quantity_per_unit
+                          : 0
+                      )
+                      .reduce((a, b) => a + b)}
+                  </Typography>
+                </>
+              ) : (
+                ""
+              )}
+
               <Details cart={cart} />
             </div>
           ) : null}{" "}

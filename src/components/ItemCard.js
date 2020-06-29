@@ -14,11 +14,11 @@ import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import CreateIcon from "@material-ui/icons/Create";
 import { ToastContainer, toast } from "react-toastify";
-import ReactGA from 'react-ga';
+import ReactGA from "react-ga";
 import Divider from "@material-ui/core/Divider";
 
-import lightGreen from '@material-ui/core/colors/lightGreen';
-import grey from '@material-ui/core/colors/grey';
+import lightGreen from "@material-ui/core/colors/lightGreen";
+import grey from "@material-ui/core/colors/grey";
 
 import clsx from "clsx";
 
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ItemCard = ({ item }) => {
   const classes = useStyles();
-  const { cart, dispatchCart, userForAnalytic } = useContext(StoreContext);
+  const { cart, dispatchCart, userForAnalytic, maintenanceMode } = useContext(StoreContext);
 
   const addToCart = (item) => {
     if (item.count < 0) return;
@@ -93,14 +93,11 @@ const ItemCard = ({ item }) => {
       <Card className={classes.root}>
         <CardMedia
           className={classes.media}
-          image={item.img_path ? "images"+item.img_path : "/default.png"}
+          image={item.img_path ? "images" + item.img_path : "/default.png"}
           title={item.name}
         />
         <CardContent>
-          <Typography
-            variant="h5"
-            component="h3"
-          >
+          <Typography variant="h5" component="h3">
             {item.name}
           </Typography>
           <Typography
@@ -111,25 +108,27 @@ const ItemCard = ({ item }) => {
           >
             {item.description || ""}
           </Typography>
-          <Typography style={{ marginTop:10 }}>
-            {(item.price ? `₪${item.price} / ` : "") +
-              item.unit_count +
-              " " +
-              item.unit_name}
-          </Typography>
+          {!maintenanceMode ? (
+            <Typography style={{ marginTop: 10 }}>
+              {(item.price ? `₪${item.price} / ` : "") +
+                item.unit_count +
+                " " +
+                item.unit_name}
+            </Typography>
+          ) : null}
         </CardContent>
         <CardActions
           style={{ backgroundColor: "beige", justifyContent: "center" }}
         >
           <Fab
-            style={{backgroundColor:lightGreen[500]}}
+            style={{ backgroundColor: lightGreen[500] }}
             aria-label="add"
             size="small"
             onClick={(e) => {
               addToCart(item);
             }}
           >
-            <AddIcon style={{color:"white"}} />
+            <AddIcon style={{ color: "white" }} />
           </Fab>
           <Typography style={{ marginLeft: 8, marginRight: 8 }}>
             {cart.find((i) => i.id === item.id)
@@ -139,19 +138,22 @@ const ItemCard = ({ item }) => {
           <Fab
             disabled={cart.find((i) => i.id === item.id) ? "" : "true"}
             color="primary"
-            style={{backgroundColor:cart.find((i) => i.id === item.id)?grey[900]:null}}
+            style={{
+              backgroundColor: cart.find((i) => i.id === item.id)
+                ? grey[900]
+                : null,
+            }}
             aria-label="subtract"
             size="small"
             onClick={(e) => {
               decreaseItemFromCart(item);
             }}
           >
-            <RemoveIcon style={{color:"white"}} />
+            <RemoveIcon style={{ color: "white" }} />
           </Fab>
-         
         </CardActions>
       </Card>
-      <Divider style={{marginTop:20}} />
+      <Divider style={{ marginTop: 20 }} />
     </>
   );
 };

@@ -81,6 +81,13 @@ const Main = () => {
             </div>
           </div>
           <Divider style={{ marginBottom: 40 }} />
+          <Typography
+                variant="h4"
+                component="p"
+                style={{ marginBottom: 20, color:"red" }}
+              >
+                *המחירים באתר אינם מעודכנים ולכן הסרנו אותם. תוכלו לבצע הזמנה וניצור איתכם קשר טלפוני לגבי מחירים.
+              </Typography>
           <Catalog />
           <ToastContainer
             position="bottom-left"

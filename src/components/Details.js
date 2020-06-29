@@ -20,7 +20,7 @@ export default function Details({ cart }) {
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [notes, setNotes] = useState("");
-  const { userForAnalytic } = useContext(StoreContext);
+  const { userForAnalytic, maintenanceMode } = useContext(StoreContext);
 
   const getTotalCost = () => {
     return cart
@@ -33,7 +33,7 @@ export default function Details({ cart }) {
   };
 
   const handleClickOpen = () => {
-    if (getTotalCost() < 100) {
+    if (!maintenanceMode && (getTotalCost() < 100)) {
       toast.error('מינימום הזמנה 100 ש"ח, אנא הוסף פריטים לעגלה', {
         position: "top-right",
         autoClose: 2000,

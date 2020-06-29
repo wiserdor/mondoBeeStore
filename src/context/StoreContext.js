@@ -9,6 +9,7 @@ export const StoreProvider = (props) => {
   const [cart, dispatchCart] = useReducer(storeReducer, []);
   const [catalog, setCatalog] = useState([]);
   const [userForAnalytic, setUserForAnalytic] = useState("User "+new Date().toTimeString()+" "+new Date().toLocaleDateString());
+  const [maintenanceMode,setMaintenanceMode] = useState(true)
 
   useEffect(() => {
     const init = async () => {
@@ -38,7 +39,8 @@ export const StoreProvider = (props) => {
     cart,
     dispatchCart,
     catalog,
-    userForAnalytic
+    userForAnalytic,
+    maintenanceMode
   };
 
   return (
