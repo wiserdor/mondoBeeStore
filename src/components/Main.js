@@ -26,6 +26,13 @@ const Main = () => {
           align="center"
           style={{ textAlign: "center", paddingTop: 40 }}
         >
+        <Typography
+                variant="h4"
+                component="p"
+                style={{ marginBottom: 20, color:"red", marginBottom:40 }}
+              >
+                יצאנו לחופשה קצרה ובתקופה הקרובה לא נבצע משלוחים, נשוב במהרה לתת לכם את הפירות והירקות הכי איכותיים (:
+              </Typography>
           <Divider style={{ marginBottom: 20 }} />
           <Grid item xs={12}>
             <Typography
@@ -81,14 +88,8 @@ const Main = () => {
             </div>
           </div>
           <Divider style={{ marginBottom: 40 }} />
-          <Typography
-                variant="h4"
-                component="p"
-                style={{ marginBottom: 20, color:"red" }}
-              >
-                *המחירים באתר אינם מעודכנים ולכן הסרנו אותם. תוכלו לבצע הזמנה וניצור איתכם קשר טלפוני לגבי מחירים.
-              </Typography>
-          <Catalog />
+          
+          {/* <Catalog />
           <ToastContainer
             position="bottom-left"
             autoClose={2000}
@@ -99,7 +100,7 @@ const Main = () => {
             pauseOnVisibilityChange
             draggable
             pauseOnHover
-          />
+          /> */}
         </Container>
       </StoreProvider>
     </>
